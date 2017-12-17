@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>demojs</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="/dist/build.js"></script>
+<script src="./css-tree-getter.js"></script>
+<script>
+  window.demojs({
+    title: 'Get CSS Tree',
+    transformers: {
+      scss: function (raw) {
+        return cssTreeGetter(raw)
+      }
+    },
+    modes: [
+      {
+        key: 'scss',
+        text: 'scss'
+      },
+      {
+        key: 'less',
+        text: 'less'
+      },
+      {
+        key: 'styl',
+        text: 'stylus'
+      }
+    ]
+  })
+</script>
+</body>
+</html>
