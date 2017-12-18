@@ -13,7 +13,18 @@ const mutations = {
 
 export default function initializeMutations({ transformers, modes, title }) {
   state.transformers = transformers
-  state.modes = modes
+  if (!Array.isArray(modes)) {
+    throw new Error('Expected \'modes\' to be array.')
+  }
+  state.modes = modes.map(mode => {
+    if (typeof mode === 'string') {
+      return {
+        key: mode,
+        text: mode
+      }
+    }
+    return mode
+  })
   state.title = title
   return {
     state,
