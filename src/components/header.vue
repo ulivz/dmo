@@ -3,18 +3,23 @@
     <div class="dmo-title">
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
-
+    <dmo-menu :meau-list="modes" class="dmo-menu"/>
   </header>
 </template>
 
 <script>
+  import menu from './menu.vue'
   import { mapState } from 'vuex'
 
   export default {
     name: 'dmo-header',
+    components: {
+      'dmo-menu': menu
+    },
     computed: {
       ...mapState([
-        'title'
+        'title',
+        'modes'
       ]),
       titlep1 () {
         return this.title.slice(0, this.title.length - 1)
@@ -29,14 +34,16 @@
 <style lang="scss">
   .dmo-header {
     display: flex;
-    font-size: 35px;
+    align-items: center;
     padding-top: 33px;
     padding-bottom: 33px;
     padding-left: 40px;
     padding-right: 40px;
     .dmo-title {
-      flex: 1;
+      flex: 0 0 auto;
+      min-width: 200px;
       cursor: pointer;
+      font-size: 35px;
       a {
         color: black;
         transition: all 0.5s ease;
@@ -50,13 +57,16 @@
         }
       }
       span {
-        font-size: 50%;
+        font-size: 30%;
         vertical-align: top;
         sup {
           position: relative;
           top: -20px;
         }
       }
+    }
+    .dmo-menu {
+      flex: 0 0 auto;
     }
   }
 </style>
