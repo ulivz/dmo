@@ -84,6 +84,7 @@
       transition: border-color 0.5s ease;
       border-color: transparent white transparent transparent;
       &:hover {
+        z-index: 11;
         border-color: transparent black transparent transparent;
         .ivu-icon {
           color: white;

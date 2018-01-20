@@ -1,16 +1,16 @@
 <template>
   <div class="layout">
+    <!--<gradient-background class="header gradient-bg"/>-->
     <dem-header/>
     <div class="layout-content">
       <div class="edit">
-        <Input :placeholder="placeholder" v-model="userInput" type="textarea" :rows="30"></Input>
+        <textarea name="" id="" cols="30" rows="10" v-model="userInput" :placeholder="placeholder"></textarea>
       </div>
       <div class="preview">
         <pre>{{ result }}</pre>
       </div>
     </div>
     <div class="layout-copy">
-      <gradient-background class="header gradient-bg"/>
       2016-2017 &copy; ULIVZ
     </div>
   </div>
@@ -67,7 +67,10 @@
   }
 
   .header.gradient-bg {
-    height: 80px;
+    position: fixed;
+    width: 10px;
+    height: 100vh;
+    z-index: 10;
   }
 
   .layout-logo {
@@ -92,16 +95,26 @@
   }
 
   .layout-content {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 196px);
     margin: 15px;
     overflow: hidden;
     background: #fff;
     border-radius: 4px;
     display: flex;
+    box-sizing: border-box;
     .edit {
       padding: 15px;
       flex: 1;
-      height: 100%;
+      textarea {
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        padding: 10px;
+        border: 4px solid #000;
+        &:focus {
+          outline: none;
+        }
+      }
     }
     .preview {
       padding: 15px;
