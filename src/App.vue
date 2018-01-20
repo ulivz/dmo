@@ -106,12 +106,15 @@
       padding: 15px;
       flex: 1;
       textarea {
-        width: 100%;
-        height: 100%;
         font-size: 16px;
         padding: 10px;
+        width: 100%;
+        height: 100%;
         border: 4px solid #000;
+        transition: all 0.3s ease;
         &:focus {
+          background-color: #ececec;
+          /*color: white;*/
           outline: none;
         }
       }
@@ -119,7 +122,14 @@
     .preview {
       padding: 15px;
       flex: 1;
-      height: 100%;
+      pre {
+        padding: 10px;
+        font-size: 16px;
+        margin: 0;
+        border: 4px solid black;
+        border-style: dashed;
+        height: 100%;
+      }
     }
   }
 
