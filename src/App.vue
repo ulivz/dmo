@@ -10,13 +10,14 @@
     </Menu>
     <div class="layout-content">
       <div class="edit">
-        <Input v-model="userInput" type="textarea" :rows="30" placeholder="Enter something..."></Input>
+        <Input :placeholder="placeholder" v-model="userInput" type="textarea" :rows="30"></Input>
       </div>
       <div class="preview">
         <pre>{{ result }}</pre>
       </div>
     </div>
     <div class="layout-copy">
+      <gradient-background class="header gradient-bg"/>
       2016-2017 &copy; ULIVZ
     </div>
   </div>
@@ -24,18 +25,17 @@
 
 <script>
   import { mapState, mapMutations } from 'vuex'
+  import header from './components/header.vue'
+  import gradientBackground from './components/gradient-background.vue'
 
   export default {
+    components: {
+      'dmo': 'header',
+      'gradient-background': gradientBackground
+    },
     data () {
       return {
-        userInput: `<div class="header">
-  <div class="tabs"></div>
-</div>
-<div class="content">
-  <div class="sidebar"></div>
-</div>
-<div class="footer"></div>
-`
+        userInput: ''
       }
     },
     created() {
@@ -51,7 +51,8 @@
         'activeTransformer',
         'modes',
         'title',
-        'activeMode'
+        'activeMode',
+        'placeholder'
       ]),
       result() {
         return this.activeTransformer(this.userInput)
@@ -62,15 +63,19 @@
 
 <style lang="scss">
   .layout {
+    font-family: letter-gothic;
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     .demojs-title {
       position: absolute;
       font-weight: bold;
-      font-family: serif;
       font-size: 25px;
       left: 20px;
     }
+  }
+
+  .header.gradient-bg {
+    height: 80px;
   }
 
   .layout-logo {

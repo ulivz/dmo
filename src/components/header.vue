@@ -1,0 +1,47 @@
+<template>
+  <header></header>
+</template>
+
+<script>
+  export default {
+  	name: 'dmo-header'
+  }
+</script>
+
+<style lang="scss">
+  .gradient-background {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background: linear-gradient(135deg,
+      #5073B8 0%,
+      #13a793 10%,
+      #07B39B 20%,
+      #6DBA82 30%,
+      #F37055 50%,
+      #EF4E7B 60%,
+      #C55B95 70%,
+      #A166AB 80%,
+      #A166AB 90%,
+      #5073B8 100%
+    ) center / cover;
+
+    background-size: 800% 800%;
+    animation: AnimationName 30s ease infinite;
+  }
+
+  @keyframes AnimationName {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+</style>
+
+

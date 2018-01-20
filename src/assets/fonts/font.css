@@ -1,0 +1,21 @@
+/* Now use @font-face at sass would have some problems:
+   See:
+      1. https://github.com/webpack-contrib/sass-loader/issues/411
+      2. https://webpack.js.org/loaders/sass-loader/#problems-with-url-
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700');
+
+@font-face {
+  font-family: "letter-gothic";
+  font-style: normal;
+  font-weight: 300;
+  src: local('Letter Gothic'), local('letter-gothic'), url('./letter-gothic-std.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "letter-gothic";
+  font-style: normal;
+  font-weight: 900;
+  src: local('Letter Gothic Bold'), local('letter-gothic-bold'), url('./letter-gothic-std-bold.woff2') format('woff2');
+}

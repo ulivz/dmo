@@ -1,12 +1,21 @@
 var path = require('path')
 var webpack = require('webpack')
 
+function getScssResourcesLoaderConfig() {
+  return {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: './src/style/_index.scss'
+    }
+  }
+}
+
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'demo.js'
+    filename: 'dmo.js'
   },
   module: {
     rules: [
@@ -22,7 +31,8 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
+          getScssResourcesLoaderConfig()
         ],
       },
       {
@@ -44,7 +54,9 @@ module.exports = {
             'scss': [
               'vue-style-loader',
               'css-loader',
-              'sass-loader'
+              'resolve-url-loader',
+              'sass-loader',
+              getScssResourcesLoaderConfig()
             ],
             'sass': [
               'vue-style-loader',
@@ -61,7 +73,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg|ttf|woff|woff|eot)$/,
+        test: /\.(png|jpg|gif|svg|ttf|woff|woff2|eot)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
@@ -79,7 +91,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    port: 8087
   },
   performance: {
     hints: false
