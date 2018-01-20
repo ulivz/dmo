@@ -4,10 +4,14 @@
     <dem-header/>
     <div class="layout-content">
       <div class="edit">
-        <textarea name="" id="" cols="30" rows="10" v-model="userInput" :placeholder="placeholder"></textarea>
+        <textarea @focus="inputFocus"
+                  @blur="inputBlur"
+                  name=""
+                  id=""
+                  cols="30" rows="10" v-model="userInput" :placeholder="placeholder"></textarea>
       </div>
       <div class="preview">
-        <pre>{{ result }}</pre>
+        <pre :class="{'blur': !isFocus}">{{ result }}</pre>
       </div>
     </div>
     <div class="layout-copy">
@@ -28,7 +32,8 @@
     },
     data () {
       return {
-        userInput: ''
+        userInput: '',
+        isFocus: false
       }
     },
     created() {
@@ -37,7 +42,13 @@
     methods: {
       ...mapMutations([
         'changeMode'
-      ])
+      ]),
+      inputFocus() {
+        this.isFocus = true
+      },
+      inputBlur() {
+        this.isFocus = false
+      }
     },
     computed: {
       ...mapState([
@@ -123,12 +134,16 @@
       padding: 15px;
       flex: 1;
       pre {
+        background-color: #ececec;
         padding: 10px;
         font-size: 16px;
         margin: 0;
         border: 4px solid black;
         border-style: dashed;
         height: 100%;
+        &.blur {
+          background-color: white;
+        }
       }
     }
   }
