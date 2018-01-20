@@ -4,6 +4,9 @@
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
     <dmo-menu :meau-list="modes" class="dmo-menu"/>
+    <div class="dmo-badge">
+      <Icon type="social-github" size="50"></Icon>
+    </div>
   </header>
 </template>
 
@@ -67,6 +70,30 @@
     }
     .dmo-menu {
       flex: 0 0 auto;
+    }
+    .dmo-badge {
+      position: fixed;
+      cursor: pointer;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 120px 120px 0;
+      transition: border-color 0.5s ease;
+      border-color: transparent white transparent transparent;
+      &:hover {
+        border-color: transparent black transparent transparent;
+        .ivu-icon {
+          color: white;
+        }
+      }
+      .ivu-icon {
+        position: absolute;
+        left: 60px;
+        top: 10px;
+        color: black;
+      }
     }
   }
 </style>
