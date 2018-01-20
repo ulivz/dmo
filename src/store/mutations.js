@@ -1,6 +1,9 @@
 const noop = raw => raw
 
 const state = {
+  username: null,
+  name: null,
+  url: null,
   initialized: false,
   activeMode: null,
   activeTransformer: null,
@@ -23,11 +26,25 @@ export default function initializeMutations({
                                               transformers,
                                               modes,
                                               title,
-                                              placeholder
+                                              placeholder,
+                                              username,
+                                              name,
                                             } = {}) {
   state.transformers = transformers
   state.title = title
   state.placeholder = placeholder
+
+
+  // username, name, url
+  state.username = username
+  state.name = name
+  if (!username) {
+    state.url = 'https://github.com/ulivz/dmo'
+  } else if (!name) {
+    state.url = 'https://github.com/' + username
+  } else {
+    state.url = 'https://github.com/' + username + '/' + name
+  }
 
   // modes
   if (typeof modes === 'string') {
