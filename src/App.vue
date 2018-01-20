@@ -1,13 +1,6 @@
 <template>
   <div class="layout">
-    <Menu mode="horizontal" :active-name="activeMode" @on-select="changeMode">
-      <div class="demojs-title">{{ title }}</div>
-      <div class="layout-assistant">
-        <MenuItem v-for="mode in modes" :key="mode.key" :name="mode.key">
-          {{ mode.text }}
-        </MenuItem>
-      </div>
-    </Menu>
+    <dem-header/>
     <div class="layout-content">
       <div class="edit">
         <Input :placeholder="placeholder" v-model="userInput" type="textarea" :rows="30"></Input>
@@ -30,7 +23,7 @@
 
   export default {
     components: {
-      'dmo': 'header',
+      'dem-header': header,
       'gradient-background': gradientBackground
     },
     data () {
@@ -65,7 +58,6 @@
   .layout {
     font-family: letter-gothic;
     border: 1px solid #d7dde4;
-    background: #f5f7f9;
     .demojs-title {
       position: absolute;
       font-weight: bold;
