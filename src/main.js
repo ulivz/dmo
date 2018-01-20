@@ -13,7 +13,7 @@ NProgress.done();
 
 Vue.use(iview)
 
-function demojs(options) {
+function dmo(options) {
   new Vue({
     el: '#app',
     store: initializeStore(options),
@@ -21,4 +21,4 @@ function demojs(options) {
   })
 }
 
-window.demojs = demojs
+window.dmo = dmo
