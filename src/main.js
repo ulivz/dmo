@@ -20,3 +20,4 @@ function dmo(options) {
 }
 
 window.dmo = dmo
+export default dmo

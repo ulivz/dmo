@@ -12,7 +12,7 @@
 
 # Quick Start
 
-Let's use dmo to make a simple babel, first, write a simple html file, then inject the following necessary dependencies:
+Let's use dmo to make a simple [Babel](http://babeljs.io/) REPL, first, write a simple html file, then inject the following necessary dependencies:
 
 ```html
 <script src="https://unpkg.com/dmo"></script>
@@ -42,20 +42,86 @@ Of course, the default also supports the response:
 
 <p aligh="center">
   <img src=".media/iphoneX.png" width="300" height="" style=""/>
-  <img src=".media/iPad.png" width="500" height="" style=""/>
 </p>
 
-## Build Setup
+## Install
 
-``` bash
-# install dependencies
-npm install
+The recommendation is to use the [unpkg](https://unpkg.com/dmo) directly to use, of course, you can also use npm/yarn to download it:
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+```bash
+npm i dmo --save
+# yarn add dmo
 ```
 
-For detailed explanation on how things work, consult the [docs for dmo-loader](http://dmojs.github.io/dmo-loader).
+## API
+
+### dmo(options)
+
+#### options
+
+- Type: `Object`
+- Required: `true`
+
+fields of options are as follows
+
+##### title
+
+- Type: `string`
+- Required: `true`
+
+  REPL's title.
+
+
+##### username
+
+- Type: `string`
+- Required: `true`
+
+  user name.
+
+##### name
+
+- Type: `string`
+- Required: `false`
+
+  Project's name.
+
+##### placeholder
+
+- Type: `string`
+- Required: `false`
+- Default: `Please enter your input`
+
+  placeholder of the input area.
+  
+
+##### transformers
+
+- Type: `{ [mode: string]: transformFn }`
+- Required: `true`
+
+  An plain object, the key is the name of the mode, the value is the transform function corresponding to the mode, note that the transform accepts a string of the current input area as input, and the return value will display in the preview area.
+
+
+## TODO 
+
+- highlight
+
+
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+
+
+## Author
+
+**dmo** © [ulivz](https://github.com/ULIVZ), Released under the [MIT](./LICENSE) License.<br>
+Authored and maintained by ulivz with help from contributors ([list](https://github.com/ULIVZ/dmo/contributors)).
+
+> [github.com/ulivz](https://github.com/ulivz) · GitHub [@ulivz](https://github.com/ULIVZ)
