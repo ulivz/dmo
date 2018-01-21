@@ -12,19 +12,12 @@
 
 # Quick Start
 
-Take generating a simple babel REPL as an example: write a simple html file first, then inject the following necessary dependencies:
-
-<details>
-<summary>Dependencies</summary>
-
-Dependencies from CDN:
+Let's use dmo to make a simple babel, first, write a simple html file, then inject the following necessary dependencies:
 
 ```html
 <script src="https://unpkg.com/dmo"></script>
 <script src="https://unpkg.com/@babel/standalone@7.0.0-beta.38/babel.min.js"></script>
 ```
-
-</details>
 
 Next, initialize it:
 
@@ -32,8 +25,8 @@ Next, initialize it:
   window.dmo({
     title: 'Babel REPL',
     transformers: {
-      es2015: function (raw) {
-        return Babel.transform(raw, { presets: ['es2015'] }).code;
+      es2015: function (input) {
+        return Babel.transform(input, { presets: ['es2015'] }).code;
       }
     }
   })
