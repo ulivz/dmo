@@ -133,11 +133,13 @@
       }
       .dmo-badge {
         border-width: 0 80px 80px 0;
+        border-color: transparent black transparent transparent;
         svg {
           width: 30px;
           height: 30px;
           left: 40px;
           top: 10px;
+          fill: white;
         }
       }
     }
