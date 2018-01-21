@@ -34,13 +34,13 @@ Next, initialize it:
 
 Open the browser, then you can get a usable Babel REPL:
 
-<p aligh="center">
+<p align="center">
   <img src=".media/safari.png" height="" style=""/>
 </p>
 
 Of course, the default also supports the response:
 
-<p aligh="center">
+<p align="center">
   <img src=".media/iphoneX.png" width="300" height="" style=""/>
 </p>
 
@@ -62,7 +62,7 @@ npm i dmo --save
 - Type: `Object`
 - Required: `true`
 
-fields of options are as follows
+  fields of options are as follows
 
 ##### title
 
