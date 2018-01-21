@@ -4,9 +4,7 @@
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
     <dmo-menu :meau-list="modes" class="dmo-menu"/>
-    <a class="dmo-badge" :href="url" target="_blank">
-      <Icon type="social-github" size="50"></Icon>
-    </a>
+    <a class="dmo-badge" :href="url" target="_blank" v-html="githubIcon"></a>
   </header>
 </template>
 
@@ -30,6 +28,9 @@
       },
       titlep2 () {
         return this.title.charAt(this.title.length - 1)
+      },
+      githubIcon() {
+        return this.$icon('github')
       }
     }
   }
@@ -86,12 +87,14 @@
       &:hover {
         z-index: 11;
         border-color: transparent black transparent transparent;
-        .ivu-icon {
-          color: white;
+        svg {
+          fill: white;
         }
       }
-      .ivu-icon {
+      svg {
         position: absolute;
+        width: 50px;
+        height: 50px;
         left: 60px;
         top: 10px;
         color: black;

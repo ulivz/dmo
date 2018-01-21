@@ -1,17 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
-import iview from 'iview'
+import Plugins from './plugins'
 import 'iview/dist/styles/iview.css'
 import initializeStore from './store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
 import './assets/fonts/font.css'
+
+Vue.use(Plugins)
 
 NProgress.start();
 NProgress.done();
-
-Vue.use(iview)
 
 function dmo(options) {
   new Vue({
