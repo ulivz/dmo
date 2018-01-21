@@ -1,3 +1,13 @@
+<a name="1.0.10"></a>
+## [1.0.10](https://github.com/ulivz/demojs/compare/v1.0.9...v1.0.10) (2018-01-21)
+
+
+### Features
+
+* add option 'input' ([e61df1b](https://github.com/ulivz/demojs/commit/e61df1b))
+
+
+
 <a name="1.0.9"></a>
 ## [1.0.9](https://github.com/ulivz/demojs/compare/v1.0.8...v1.0.9) (2018-01-21)
 
