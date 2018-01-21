@@ -1,3 +1,16 @@
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/ulivz/demojs/compare/v1.0.5...v1.0.6) (2018-01-21)
+
+
+### Features
+
+* enhance the responsive design ([94103ea](https://github.com/ulivz/demojs/commit/94103ea))
+* remove the dependency of iview ([84e9762](https://github.com/ulivz/demojs/commit/84e9762))
+* remove the file-loader ([144089a](https://github.com/ulivz/demojs/commit/144089a))
+* support for responsive design ([a1adabb](https://github.com/ulivz/demojs/commit/a1adabb))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/ulivz/demojs/compare/v1.0.4...v1.0.5) (2018-01-20)
 
