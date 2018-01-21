@@ -11,7 +11,7 @@
       a {
         color: black;
         transition: all 0.5s ease;
-        padding: 5px;
+        padding: 5px 10px;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
@@ -64,6 +64,7 @@
     .dmo-header {
       padding: 33px 40px;
       .dmo-title {
+        margin-right: 30px;
         float: left;
       }
       .dmo-menu {
