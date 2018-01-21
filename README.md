@@ -14,25 +14,29 @@
 
 Take generating a simple babel REPL as an example: write a simple html file first, then inject the following necessary dependencies:
 
+<details>
+<summary>Dependencies</summary>
+
+Dependencies from CDN:
+
 ```html
 <script src="https://unpkg.com/dmo"></script>
 <script src="https://unpkg.com/@babel/standalone@7.0.0-beta.38/babel.min.js"></script>
-<script>
+```
+
+</details>
+
+Next, initialize it:
+
+```js
   window.dmo({
-    username: 'ulivz',
-    name: 'dmo',
     title: 'Babel REPL',
-    placeholder: 'Please enter your input',
     transformers: {
       es2015: function (raw) {
         return Babel.transform(raw, { presets: ['es2015'] }).code;
       }
-    },
-    modes: [
-      'es2015'
-    ]
+    }
   })
-</script>
 ```
 
 Open the browser, then you can get a usable Babel REPL:
