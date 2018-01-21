@@ -2,8 +2,10 @@
 
 > A Vue.js project
 
-<img src=".media/iphoneX.png" width="300" height="" style=""/>
-<img src=".media/iPad.png" width="500" height="" style=""/>
+<p aligh="center">
+  <img src=".media/iphoneX.png" width="300" height="" style=""/>
+  <img src=".media/iPad.png" width="500" height="" style=""/>
+</p>
 
 ## Build Setup
 
