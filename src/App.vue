@@ -35,11 +35,11 @@
       }
     },
     created() {
-      this.changeMode(this.modes[0].key)
+      this.selectMode(this.modes[0].key)
     },
     methods: {
       ...mapMutations([
-        'changeMode'
+        'selectMode'
       ]),
       inputFocus() {
         this.isFocus = true

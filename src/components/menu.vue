@@ -10,6 +10,7 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
   export default {
     name: 'dmo-header',
     data() {
@@ -24,8 +25,14 @@
       this.activeItem = this.meauList.find(item => item.active)
     },
     methods: {
-      select(key) {
-        this.activeItem = key
+      ...mapMutations([
+        'selectMode'
+      ]),
+      select(item) {
+        if (item !== this.activeItem) {
+          this.activeItem = item
+          this.selectMode(item.key)
+        }
       }
     }
   }

@@ -46,7 +46,7 @@ Of course, the default also supports the response:
 
 ## Install
 
-The recommendation is to use the [unpkg](https://unpkg.com/dmo) directly to use, of course, you can also use npm/yarn to download it:
+The recommendation is to use the [unpkg](https://unpkg.com/dmo) directly, of course, you can also use npm/yarn to download it:
 
 ```bash
 npm i dmo --save

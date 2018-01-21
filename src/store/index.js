@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import initializeMutations from './mutations'
+import initStateAndMutations from './mutations'
 import plugins from './plugins'
 
 Vue.use(Vuex)
 
 export default function initializeStore(options) {
   return new Vuex.Store({
-    ...initializeMutations(options),
+    ...initStateAndMutations(options),
     plugins
   })
 }

@@ -15,22 +15,13 @@
     title: 'DMO',
     placeholder: 'Please enter your input',
     transformers: {
-      test1: function (raw) {
-        return raw
+      prefix: function (input) {
+        return 'prefix-' + input
+      },
+      suffix: function (input) {
+        return input + '-suffix'
       }
-    },
-    modes: [
-      'test1',
-      'test2',
-      'test3',
-      'test4',
-      'test5',
-      'test6',
-      'test7',
-      'test8',
-      'test9',
-      'test10'
-    ]
+    }
   })
 </script>
 </body>
