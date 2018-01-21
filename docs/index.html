@@ -7,29 +7,21 @@
 </head>
 <body>
 <div id="app"></div>
-<script src="/dist/dmo.js"></script>
+<script src="https://unpkg.com/dmo"></script>
+<script src="https://unpkg.com/@babel/standalone@7.0.0-beta.38/babel.min.js"></script>
 <script>
   window.dmo({
     username: 'ulivz',
     name: 'dmo',
-    title: 'DMO',
+    title: 'Babel REPL',
     placeholder: 'Please enter your input',
     transformers: {
-      test1: function (raw) {
-        return raw
+      es2015: function (raw) {
+        return Babel.transform(raw, { presets: ['es2015'] }).code;
       }
     },
     modes: [
-      'test1',
-      'test2',
-      'test3',
-      'test4',
-      'test5',
-      'test6',
-      'test7',
-      'test8',
-      'test9',
-      'test10'
+      'es2015'
     ]
   })
 </script>
