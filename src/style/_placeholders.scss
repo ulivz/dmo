@@ -1,0 +1,44 @@
+// A better method to clear fix (recommend)
+// To use this method when you set 'overflow' on the parent container
+// and don't want to cover it.
+%clear-fix {
+  zoom: 1;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    width: 0;
+    clear: both;
+    visibility: hidden
+  }
+}
+
+// Display ellipsis when single line of text was overflowed
+%single-line-text-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// A better method to make block element absolute center
+// Please make sure that parent element set 'position: relative' and its size was larger than the children element
+%absolute-center {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+// A common overlay style
+%overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+

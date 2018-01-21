@@ -1,22 +1,20 @@
 <template>
   <div class="layout">
     <!--<gradient-background class="header gradient-bg"/>-->
-    <dem-header/>
+    <dmo-header/>
     <div class="layout-content">
       <div class="edit">
         <textarea @focus="inputFocus"
                   @blur="inputBlur"
-                  name=""
-                  id=""
-                  cols="30" rows="10" v-model="userInput" :placeholder="placeholder"></textarea>
+                  v-model="userInput" :placeholder="placeholder"></textarea>
       </div>
       <div class="preview">
         <pre :class="{'focus': isFocus}">{{ result }}</pre>
       </div>
     </div>
-    <div class="layout-copy">
-      2016-2017 &copy; ULIVZ
-    </div>
+    <footer class="layout-copy">
+      2016-2017 &copy; <a href="https://github.com/ulivz">ULIVZ</a>
+    </footer>
   </div>
 </template>
 
@@ -27,7 +25,7 @@
 
   export default {
     components: {
-      'dem-header': header,
+      'dmo-header': header,
       'gradient-background': gradientBackground
     },
     data () {
@@ -66,93 +64,106 @@
 </script>
 
 <style lang="scss">
-  .layout {
-    font-family: letter-gothic;
-    border: 1px solid #d7dde4;
-    .demojs-title {
-      position: absolute;
-      font-weight: bold;
-      font-size: 25px;
-      left: 20px;
-    }
-  }
-
-  .header.gradient-bg {
+  .gradient-bg {
     position: fixed;
     width: 10px;
     height: 100vh;
     z-index: 10;
   }
 
-  .layout-logo {
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-  }
+  .layout {
+    overflow-x: hidden;
+    font-family: letter-gothic;
+    border: 1px solid #d7dde4;
+    dmo-header {
 
-  .layout-assistant {
-    width: 300px;
-    margin: 0 auto;
-    height: inherit;
-  }
-
-  .layout-breadcrumb {
-    padding: 10px 15px 0;
-  }
-
-  .layout-content {
-    min-height: calc(100vh - 196px);
-    margin: 15px;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 4px;
-    display: flex;
-    box-sizing: border-box;
-    .edit {
-      padding: 15px;
-      flex: 1;
-      textarea {
-        font-family: letter-gothic;
-        font-size: 16px;
-        padding: 10px;
-        width: 100%;
+    }
+    .layout-content {
+      background: #fff;
+      border-radius: 4px;
+      box-sizing: border-box;
+      min-height: calc(100vh - 196px);
+      overflow: hidden;
+      margin: 15px;
+      position: absolute;
+      top: 110px;
+      left: 0;
+      right: 0;
+      bottom: 51px;
+      @extend %clear-fix;
+      .edit, .preview {
+        float: left;
+        width: 50%;
         height: 100%;
-        border: 4px solid #000;
-        transition: all 0.3s ease;
-        &:focus {
-          background-color: #f1f1f1;
-          outline: none;
+        padding: 15px;
+      }
+      .edit {
+        textarea {
+          width: 100%;
+          height: 100%;
+          font-family: letter-gothic;
+          font-size: 16px;
+          padding: 10px;
+          border: 4px solid #000;
+          transition: all 0.3s ease;
+          &:focus {
+            background-color: #f1f1f1;
+            outline: none;
+          }
+        }
+      }
+      .preview {
+        pre {
+          width: 100%;
+          height: 100%;
+          font-family: letter-gothic;
+          padding: 10px;
+          font-size: 16px;
+          margin: 0;
+          border: 4px solid black;
+          background-color: white;
+          border-style: dashed;
+          &.focus {
+            background-color: #f1f1f1;
+          }
         }
       }
     }
-    .preview {
-      padding: 15px;
-      flex: 1;
-      pre {
-        font-family: letter-gothic;
-        padding: 10px;
-        font-size: 16px;
-        margin: 0;
-        border: 4px solid black;
-        background-color: white;
-        border-style: dashed;
-        height: 100%;
-        &.focus {
-          background-color: #f1f1f1;
-        }
+    .layout-copy {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 10px 0 20px;
+      color: #9ea7b4;
+      a {
+        text-decoration: underline;
       }
     }
   }
 
-  .layout-copy {
-    text-align: center;
-    padding: 10px 0 20px;
-    color: #9ea7b4;
+  @include to-liquid-breakpoint($medium) {
+    .layout {
+      .layout-content {
+        .edit, .preview {
+          float: left;
+          width: 100%;
+          height: 50%;
+          padding: 15px;
+        }
+        .edit {
+          textarea {
+          }
+        }
+        .preview {
+          pre {
+          }
+        }
+      }
+      .layout-copy {
+      }
+    }
   }
 </style>
 

@@ -1,0 +1,108 @@
+////////////////////////////////////////////////////////////////////////////////
+//~ LIQUID Layout                                                            ~//
+//~                                                                          ~//
+////////////////////////////////////////////////////////////////////////////////
+
+// @public
+$small: 'small';    // 0 -> 829px, percentage based
+$medium: 'medium';  // 830px -> 979px, percentage based
+$large: 'large';    // 980px -> 1279px, pixel fixed
+$xlarge: 'xlarge';  // 1280px -> ∞, pixel fixed
+
+// @private
+$private-small-medium: 830px;
+$private-medium-large: 980px;
+$private-large-xlarge: 1280px;
+
+@mixin from-liquid-breakpoint($range) {
+	@if ($range == $small) {
+		@warn "from-liquid-breakpoint(#{$range}): No media query since this is the default in Laquid Layout.";
+		@content;
+	} @else if ($range == $medium) {
+		@media (min-width: $private-small-medium) {
+			@content;
+		}
+	} @else if ($range == $large) {
+		@media (min-width: $private-medium-large) {
+			@content;
+		}
+	} @else if ($range == $xlarge) {
+		@media (min-width: $private-large-xlarge) {
+			@content;
+		}
+	}
+}
+
+@mixin to-liquid-breakpoint($range) {
+	@if ($range == $small) {
+		@media (max-width: $private-small-medium - 1) {
+			@content;
+		}
+	} @else if ($range == $medium) {
+		@media (max-width: $private-medium-large - 1) {
+			@content;
+		}
+	} @else if ($range == $large) {
+		@media (max-width: $private-large-xlarge - 1) {
+			@content;
+		}
+	} @else if ($range == $xlarge) {
+		@warn "from-liquid-breakpoint(#{$range}): No media query since the extra-large breakpoint has no upper bound on its width.";
+		@content;
+	}
+}
+
+@mixin in-liquid-breakpoint($range) {
+	@if ($range == $small) {
+		@media (max-width: $private-small-medium - 1) {
+			@content;
+		}
+	} @else if ($range == $medium) {
+		@media (min-width: $private-small-medium) and (max-width: $private-medium-large - 1) {
+			@content;
+		}
+	} @else if ($range == $large) {
+		@media (min-width: $private-medium-large) and (max-width: $private-large-xlarge - 1) {
+			@content;
+		}
+	} @else if ($range == $xlarge) {
+		@media (max-width: $private-large-xlarge) {
+			@content;
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//~ Liquid Stripe Wrapper (A standard LIQUID responsive container)           ~//
+//~                                                                          ~//
+//~ @placeholder                                                             ~//
+//~ @usage: @extend %liquid-stripe-wrapper;                                  ~//
+////////////////////////////////////////////////////////////////////////////////
+
+// @component-root
+%liquid-stripe-wrapper {
+	width: 100%;
+	padding: 0 2.75%;
+	box-sizing: border-box;
+}
+
+// @override
+@include from-liquid-breakpoint($medium) {
+	%liquid-stripe-wrapper {
+		padding: 0 2%;
+	}
+}
+
+// @override
+@include from-liquid-breakpoint($large) {
+	%liquid-stripe-wrapper {
+		padding: 0 calc((100% - 940px) / 2);
+	}
+}
+
+// @override
+@include from-liquid-breakpoint($xlarge) {
+	%liquid-stripe-wrapper {
+		padding: 0 calc((100% - 1240px) / 2);
+	}
+}

@@ -46,7 +46,7 @@
     padding-right: 40px;
     .dmo-title {
       flex: 0 0 auto;
-      min-width: 200px;
+      min-width: 100px;
       cursor: pointer;
       font-size: 35px;
       a {
@@ -72,6 +72,8 @@
     }
     .dmo-menu {
       flex: 0 0 auto;
+      overflow-x: scroll;
+      max-width: 300px;
     }
     .dmo-badge {
       position: fixed;
@@ -98,6 +100,26 @@
         left: 60px;
         top: 10px;
         color: black;
+      }
+    }
+  }
+
+  @include to-liquid-breakpoint($medium) {
+    .dmo-header {
+      .dmo-title {
+
+      }
+      .dmo-menu {
+
+      }
+      .dmo-badge {
+        border-width: 0 80px 80px 0;
+        svg {
+          width: 30px;
+          height: 30px;
+          left: 40px;
+          top: 10px;
+        }
       }
     }
   }
