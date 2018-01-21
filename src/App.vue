@@ -11,7 +11,7 @@
                   cols="30" rows="10" v-model="userInput" :placeholder="placeholder"></textarea>
       </div>
       <div class="preview">
-        <pre :class="{'blur': !isFocus}">{{ result }}</pre>
+        <pre :class="{'focus': isFocus}">{{ result }}</pre>
       </div>
     </div>
     <div class="layout-copy">
@@ -117,6 +117,7 @@
       padding: 15px;
       flex: 1;
       textarea {
+        font-family: letter-gothic;
         font-size: 16px;
         padding: 10px;
         width: 100%;
@@ -124,8 +125,7 @@
         border: 4px solid #000;
         transition: all 0.3s ease;
         &:focus {
-          background-color: #ececec;
-          /*color: white;*/
+          background-color: #f1f1f1;
           outline: none;
         }
       }
@@ -134,15 +134,16 @@
       padding: 15px;
       flex: 1;
       pre {
-        background-color: #ececec;
+        font-family: letter-gothic;
         padding: 10px;
         font-size: 16px;
         margin: 0;
         border: 4px solid black;
+        background-color: white;
         border-style: dashed;
         height: 100%;
-        &.blur {
-          background-color: white;
+        &.focus {
+          background-color: #f1f1f1;
         }
       }
     }

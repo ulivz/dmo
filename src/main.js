@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Plugins from './plugins'
-import 'iview/dist/styles/iview.css'
 import initializeStore from './store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
