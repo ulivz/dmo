@@ -1,3 +1,70 @@
+<template>
+  <div class="layout">
+    <!--<gradient-background class="header gradient-bg"/>-->
+    <dmo-header/>
+    <div class="layout-content">
+      <div class="edit">
+        <textarea @focus="inputFocus"
+                  @blur="inputBlur"
+                  v-model="userInput" :placeholder="placeholder"></textarea>
+      </div>
+      <div class="preview">
+        <pre :class="{'focus': isFocus}">{{ result }}</pre>
+      </div>
+    </div>
+    <footer class="layout-copy">
+      2016-2017 &copy; <a :href="userUrl">{{ (username || 'dmo').toUpperCase() }}</a>
+    </footer>
+  </div>
+</template>
+
+<script>
+  import { mapState, mapMutations } from 'vuex'
+  import header from './components/header.vue'
+  import gradientBackground from './components/gradient-background.vue'
+
+  export default {
+    components: {
+      'dmo-header': header,
+      'gradient-background': gradientBackground
+    },
+    data () {
+      return {
+        userInput: '',
+        isFocus: false
+      }
+    },
+    created() {
+      this.selectMode(this.modes[0].key)
+    },
+    methods: {
+      ...mapMutations([
+        'selectMode'
+      ]),
+      inputFocus() {
+        this.isFocus = true
+      },
+      inputBlur() {
+        this.isFocus = false
+      }
+    },
+    computed: {
+      ...mapState([
+        'activeTransformer',
+        'modes',
+        'title',
+        'activeMode',
+        'placeholder',
+        'username',
+        'userUrl'
+      ]),
+      result() {
+        return this.activeTransformer(this.userInput)
+      }
+    }
+  }
+</script>
+
 <style lang="scss">
   .gradient-bg {
     position: fixed;
@@ -100,73 +167,3 @@
     }
   }
 </style>
-
-<template>
-  <div class="layout">
-    <!--<gradient-background class="header gradient-bg"/>-->
-    <dmo-header/>
-    <div class="layout-content">
-      <div class="edit">
-        <textarea @focus="inputFocus"
-                  @blur="inputBlur"
-                  v-model="userInput" :placeholder="placeholder"></textarea>
-      </div>
-      <div class="preview">
-        <pre :class="{'focus': isFocus}">{{ result }}</pre>
-      </div>
-    </div>
-    <footer class="layout-copy">
-      2016-2017 &copy; <a :href="userUrl">{{ (username || 'dmo').toUpperCase() }}</a>
-    </footer>
-  </div>
-</template>
-
-<script>
-  import { mapState, mapMutations } from 'vuex'
-  import header from './components/header.vue'
-  import gradientBackground from './components/gradient-background.vue'
-
-  export default {
-    components: {
-      'dmo-header': header,
-      'gradient-background': gradientBackground
-    },
-    data () {
-      return {
-        userInput: '',
-        isFocus: false
-      }
-    },
-    created() {
-      this.selectMode(this.modes[0].key)
-    },
-    methods: {
-      ...mapMutations([
-        'selectMode'
-      ]),
-      inputFocus() {
-        this.isFocus = true
-      },
-      inputBlur() {
-        this.isFocus = false
-      }
-    },
-    computed: {
-      ...mapState([
-        'activeTransformer',
-        'modes',
-        'title',
-        'activeMode',
-        'placeholder',
-        'username',
-        'userUrl'
-      ]),
-      result() {
-        return this.activeTransformer(this.userInput)
-      }
-    }
-  }
-</script>
-
-
-

@@ -1,25 +1,3 @@
-<style scoped>
-    div{
-        position: relative;
-        font-size: 14px;
-    }
-    span.copy{
-        border-radius: 0 0 3px 3px;
-        padding: 2px 5px;
-        position: absolute;
-        top: 5px;
-        right: 0;
-        color: #b2b2b2;
-        cursor: pointer;
-    }
-    .bg + span.copy{
-        right: 5px;
-    }
-    span.copy:hover{
-        color: #5c6b77;
-    }
-</style>
-
 <template>
     <div>
         <pre :class="{bg: bg}"><code :class="language" ref="code"><slot name="code"></slot></code></pre>
@@ -92,3 +70,25 @@
         }
     }
 </script>
+
+<style scoped>
+  div{
+    position: relative;
+    font-size: 14px;
+  }
+  span.copy{
+    border-radius: 0 0 3px 3px;
+    padding: 2px 5px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    color: #b2b2b2;
+    cursor: pointer;
+  }
+  .bg + span.copy{
+    right: 5px;
+  }
+  span.copy:hover{
+    color: #5c6b77;
+  }
+</style>
