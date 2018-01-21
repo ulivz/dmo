@@ -116,7 +116,7 @@
       </div>
     </div>
     <footer class="layout-copy">
-      2016-2017 &copy; <a :href=" 'https://github.com/' + username ">{{ username.toUpperCase() }}</a>
+      2016-2017 &copy; <a :href="userUrl">{{ (username || 'dmo').toUpperCase() }}</a>
     </footer>
   </div>
 </template>
@@ -158,7 +158,8 @@
         'title',
         'activeMode',
         'placeholder',
-        'username'
+        'username',
+        'userUrl'
       ]),
       result() {
         return this.activeTransformer(this.userInput)

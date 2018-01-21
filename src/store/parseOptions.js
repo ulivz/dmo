@@ -1,3 +1,6 @@
+const GITHUB_BASE_URL = 'https://github.com'
+const DMO_URL = 'ulivz/dmo'
+
 export default function parseOptions
   ({
      transformers,
@@ -12,17 +15,17 @@ export default function parseOptions
   state.title = title
   state.placeholder = placeholder
 
-  // username, name, url
+  // username, name, userUrl, projectUrl
   state.username = username
   state.name = name
-  if (!username) {
-    state.url = 'https://github.com/ulivz/dmo'
-  } else if (!name) {
-    state.url = 'https://github.com/' + username
+  state.userUrl = GITHUB_BASE_URL + '/' + (state.username || DMO_URL)
+  if (!username || !name) {
+    state.projectUrl = state.userUrl
   } else {
-    state.url = 'https://github.com/' + username + '/' + name
+    state.projectUrl = state.userUrl + '/' + state.name
   }
 
+  // transformers, modes
   state.transformers = transformers
 
   if (!modes) {

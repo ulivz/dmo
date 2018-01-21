@@ -114,7 +114,7 @@
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
     <dmo-menu :meau-list="modes" class="dmo-menu"/>
-    <a class="dmo-badge" :href="url" target="_blank" v-html="githubIcon"></a>
+    <a class="dmo-badge" :href="projectUrl" target="_blank" v-html="githubIcon"></a>
   </header>
 </template>
 
@@ -131,7 +131,7 @@
       ...mapState([
         'title',
         'modes',
-        'url'
+        'projectUrl'
       ]),
       titlep1 () {
         return this.title.slice(0, this.title.length - 1)
