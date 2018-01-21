@@ -2,6 +2,10 @@
 
 > A Vue.js project
 
+![](./.media/iphoneX.png)
+![](./.media/iPad.png)
+
+
 ## Build Setup
 
 ``` bash

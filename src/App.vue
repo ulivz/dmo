@@ -82,7 +82,6 @@
       background: #fff;
       border-radius: 4px;
       box-sizing: border-box;
-      min-height: calc(100vh - 196px);
       overflow: hidden;
       margin: 15px;
       position: absolute;
