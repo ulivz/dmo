@@ -19,6 +19,7 @@
         color: #5c6b77;
     }
 </style>
+
 <template>
     <div>
         <pre :class="{bg: bg}"><code :class="language" ref="code"><slot name="code"></slot></code></pre>
@@ -28,6 +29,7 @@
         </span>
     </div>
 </template>
+
 <script>
     import hljs from 'hljs';
     import Clipboard from 'clipboard';

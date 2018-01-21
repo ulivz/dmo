@@ -1,11 +1,3 @@
-<template>
-  <div class="gradient-background"></div>
-</template>
-
-<script>
-  export default {}
-</script>
-
 <style lang="scss">
   .gradient-background {
     color: #fff;
@@ -41,5 +33,14 @@
     }
   }
 </style>
+
+<template>
+  <div class="gradient-background"></div>
+</template>
+
+<script>
+  export default {}
+</script>
+
 
 

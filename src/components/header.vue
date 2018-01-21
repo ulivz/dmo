@@ -1,41 +1,3 @@
-<template>
-  <header class="dmo-header">
-    <div class="dmo-title">
-      <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
-    </div>
-    <dmo-menu :meau-list="modes" class="dmo-menu"/>
-    <a class="dmo-badge" :href="url" target="_blank" v-html="githubIcon"></a>
-  </header>
-</template>
-
-<script>
-  import menu from './menu.vue'
-  import { mapState } from 'vuex'
-
-  export default {
-    name: 'dmo-header',
-    components: {
-      'dmo-menu': menu
-    },
-    computed: {
-      ...mapState([
-        'title',
-        'modes',
-        'url'
-      ]),
-      titlep1 () {
-        return this.title.slice(0, this.title.length - 1)
-      },
-      titlep2 () {
-        return this.title.charAt(this.title.length - 1)
-      },
-      githubIcon() {
-        return this.$icon('github')
-      }
-    }
-  }
-</script>
-
 <style lang="scss">
   .dmo-header {
     white-space: nowrap;
@@ -145,5 +107,44 @@
     }
   }
 </style>
+
+<template>
+  <header class="dmo-header">
+    <div class="dmo-title">
+      <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
+    </div>
+    <dmo-menu :meau-list="modes" class="dmo-menu"/>
+    <a class="dmo-badge" :href="url" target="_blank" v-html="githubIcon"></a>
+  </header>
+</template>
+
+<script>
+  import menu from './menu.vue'
+  import { mapState } from 'vuex'
+
+  export default {
+    name: 'dmo-header',
+    components: {
+      'dmo-menu': menu
+    },
+    computed: {
+      ...mapState([
+        'title',
+        'modes',
+        'url'
+      ]),
+      titlep1 () {
+        return this.title.slice(0, this.title.length - 1)
+      },
+      titlep2 () {
+        return this.title.charAt(this.title.length - 1)
+      },
+      githubIcon() {
+        return this.$icon('github')
+      }
+    }
+  }
+</script>
+
 
 
