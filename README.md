@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#"><img width="100" src=".media/logo.png" alt="Dmo logo"></a>
+  <a href="#"><img width="400" src=".media/logo.png" alt="Dmo logo"></a>
 </p>
 
 <p align="center">
@@ -10,7 +10,38 @@
   <a href="https://www.npmjs.com/package/dmo"><img src="https://img.shields.io/npm/l/dmo.svg" alt="License"></a>
 </p>
 
-> Visible input and output
+# Quick Start
+
+Take generating a simple babel REPL as an example: write a simple html file first, then inject the following necessary dependencies:
+
+```html
+<script src="https://unpkg.com/dmo"></script>
+<script src="https://unpkg.com/@babel/standalone@7.0.0-beta.38/babel.min.js"></script>
+<script>
+  window.dmo({
+    username: 'ulivz',
+    name: 'dmo',
+    title: 'Babel REPL',
+    placeholder: 'Please enter your input',
+    transformers: {
+      es2015: function (raw) {
+        return Babel.transform(raw, { presets: ['es2015'] }).code;
+      }
+    },
+    modes: [
+      'es2015'
+    ]
+  })
+</script>
+```
+
+Open the browser, then you can get a usable Babel REPL:
+
+<p aligh="center">
+  <img src=".media/safari.png" height="" style=""/>
+</p>
+
+Of course, the default also supports the response:
 
 <p aligh="center">
   <img src=".media/iphoneX.png" width="300" height="" style=""/>
