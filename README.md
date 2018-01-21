@@ -112,8 +112,8 @@ npm i dmo --save
 
 ## TODO 
 
-- highlight
-
+- Highlight
+- Support asynchronous input.
 
 
 ## Contributing

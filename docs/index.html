@@ -11,18 +11,14 @@
 <script src="https://unpkg.com/@babel/standalone@7.0.0-beta.38/babel.min.js"></script>
 <script>
   window.dmo({
-    username: 'ulivz',
-    name: 'dmo',
     title: 'Babel REPL',
-    placeholder: 'Please enter your input',
+    placeholder: 'Please enter your ES6 code',
+    input: 'const count = ({a,b} = {}) => a + b',
     transformers: {
       es2015: function (raw) {
         return Babel.transform(raw, { presets: ['es2015'] }).code;
       }
-    },
-    modes: [
-      'es2015'
-    ]
+    }
   })
 </script>
 </body>
