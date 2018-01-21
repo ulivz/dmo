@@ -33,12 +33,12 @@
 
 <style lang="scss">
   ul.dmo-menu {
-    display: flex;
     list-style: none;
     font-family: Hind;
     text-transform: uppercase;
     li {
-      flex: 0 0 auto;
+      display: inline-block;
+      vertical-align: middle;
       min-width: 100px;
       text-align: center;
       a {

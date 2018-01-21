@@ -38,14 +38,11 @@
 
 <style lang="scss">
   .dmo-header {
-    display: flex;
-    align-items: center;
-    padding-top: 33px;
-    padding-bottom: 33px;
-    padding-left: 40px;
-    padding-right: 40px;
+    white-space: nowrap;
+    @extend %clear-fix;
     .dmo-title {
-      flex: 0 0 auto;
+      height: 44px;
+      box-sizing: border-box;
       min-width: 100px;
       cursor: pointer;
       font-size: 35px;
@@ -71,19 +68,20 @@
       }
     }
     .dmo-menu {
-      flex: 0 0 auto;
+      height: 44px;
+      line-height: 44px;
+      box-sizing: border-box;
       overflow-x: scroll;
-      max-width: 300px;
     }
     .dmo-badge {
       position: fixed;
+      transition: all 0.25s ease;
       cursor: pointer;
       top: 0;
       right: 0;
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 0 120px 120px 0;
       transition: border-color 0.5s ease;
       border-color: transparent white transparent transparent;
       &:hover {
@@ -95,22 +93,43 @@
       }
       svg {
         position: absolute;
-        width: 50px;
-        height: 50px;
-        left: 60px;
-        top: 10px;
         color: black;
+      }
+    }
+  }
+
+  @include from-liquid-breakpoint($large) {
+    .dmo-header {
+      padding: 33px 40px;
+      .dmo-title {
+        float: left;
+      }
+      .dmo-menu {
+        margin: auto;
+        padding-right: 100px;
+      }
+      .dmo-badge {
+        border-width: 0 120px 120px 0;
+        svg {
+          width: 50px;
+          height: 50px;
+          left: 60px;
+          top: 10px;
+        }
       }
     }
   }
 
   @include to-liquid-breakpoint($medium) {
     .dmo-header {
-      .dmo-title {
+      padding: 25px;
 
+      .dmo-title {
+        text-align: center;
       }
       .dmo-menu {
-
+        text-align: center;
+        white-space: nowrap;
       }
       .dmo-badge {
         border-width: 0 80px 80px 0;

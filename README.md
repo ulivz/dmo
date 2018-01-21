@@ -1,4 +1,4 @@
-# demojs
+# dmo
 
 > A Vue.js project
 
