@@ -2,9 +2,8 @@
 
 > A Vue.js project
 
-![](./.media/iphoneX.png)
-![](./.media/iPad.png)
-
+<img src=".media/iphoneX.png" width="300" height="" style=""/>
+<img src=".media/iPad.png" width="500" height="" style=""/>
 
 ## Build Setup
 
