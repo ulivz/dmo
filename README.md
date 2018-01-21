@@ -63,6 +63,13 @@ npm i dmo --save
 - Required: `true`
 
   fields of options are as follows
+  
+##### input
+
+- Type: `string`
+- Required: `true`
+
+  REPL's input initial value.
 
 ##### title
 

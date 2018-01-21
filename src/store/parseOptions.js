@@ -3,6 +3,7 @@ const DMO_URL = 'ulivz/dmo'
 
 export default function parseOptions
   ({
+     input,
      transformers,
      modes,
      title,
@@ -12,6 +13,7 @@ export default function parseOptions
    } = {}) {
   const state = {}
 
+  state.input = input
   state.title = title
   state.placeholder = placeholder
 

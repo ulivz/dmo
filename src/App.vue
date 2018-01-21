@@ -35,6 +35,9 @@
       }
     },
     created() {
+      if (this.input) {
+        this.userInput = this.input
+      }
       this.selectMode(this.modes[0].key)
     },
     methods: {
@@ -50,6 +53,7 @@
     },
     computed: {
       ...mapState([
+        'input',
         'activeTransformer',
         'modes',
         'title',
@@ -59,6 +63,7 @@
         'userUrl'
       ]),
       result() {
+      	  console.log(this.activeTransformer)
         return this.activeTransformer(this.userInput)
       }
     }

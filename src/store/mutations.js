@@ -3,6 +3,7 @@ import parseOptions from './parseOptions'
 const noop = raw => raw
 
 const state = {
+  input: null,
   username: null,
   name: null,
   url: null,
