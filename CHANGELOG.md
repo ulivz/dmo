@@ -1,3 +1,8 @@
+<a name="1.0.13"></a>
+## [1.0.13](https://github.com/ulivz/demojs/compare/v1.0.12...v1.0.13) (2018-01-22)
+
+
+
 <a name="1.0.12"></a>
 ## [1.0.12](https://github.com/ulivz/demojs/compare/v1.0.11...v1.0.12) (2018-01-22)
 

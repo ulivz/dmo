@@ -1,7 +1,7 @@
 {
   "name": "dmo",
   "description": "Browser REPL generator",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
   "scripts": {
