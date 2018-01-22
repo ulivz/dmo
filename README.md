@@ -12,7 +12,7 @@
 
 # Quick Start
 
-Let's use dmo to make a simple [Babel](http://babeljs.io/) REPL, first, write a simple html file, then inject the following necessary dependencies:
+Let's use dmo to make a simple **[Babel](http://babeljs.io/) REPL**, first, write a simple html file, then inject the following necessary dependencies:
 
 ```html
 <script src="https://unpkg.com/dmo"></script>
@@ -32,7 +32,7 @@ Next, initialize it:
   })
 ```
 
-Open the browser, then you can get a usable Babel REPL:
+Open the browser, then you can get a usable Babel REPL (_Check out the online [DEMO](http://www.v2js.com/dmo/)_):
 
 <p align="center">
   <img src=".media/safari.png" height="" style=""/>
@@ -44,7 +44,6 @@ Of course, the default also supports the response:
   <img src=".media/iphoneX.png" width="300" height="" style=""/>
 </p>
 
-Check out the online [DEMO](http://www.v2js.com/dmo/)
 
 ## Install
 
