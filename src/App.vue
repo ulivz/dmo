@@ -19,6 +19,7 @@
 </template>
 
 <script>
+  import request from './util/fetch'
   import { mapState, mapMutations } from 'vuex'
   import header from './components/header.vue'
   import gradientBackground from './components/gradient-background.vue'
@@ -39,6 +40,9 @@
         this.userInput = this.input
       }
       this.selectMode(this.modes[0].key)
+      request.get('https://raw.githubusercontent.com/vuejs/vue/dev/README.md', (data) => {
+        console.log(data)
+      })
     },
     methods: {
       ...mapMutations([
@@ -63,7 +67,6 @@
         'userUrl'
       ]),
       result() {
-      	  console.log(this.activeTransformer)
         return this.activeTransformer(this.userInput)
       }
     }
