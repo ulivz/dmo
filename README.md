@@ -10,7 +10,7 @@
   <a href="https://www.npmjs.com/package/dmo"><img src="https://img.shields.io/npm/l/dmo.svg" alt="License"></a>
 </p>
 
-# Quick Start
+# Getting Started
 
 Let's use dmo to make a simple **[Babel](http://babeljs.io/) REPL**, first, write a simple html file, then inject the following necessary dependencies:
 
@@ -116,9 +116,26 @@ npm i dmo --save
   An plain object, the key is the name of the mode, the value is the transform function corresponding to the mode, note that the transform accepts a string of the current input area as input, and the return value will display in the preview area.
 
 
+## Projects Using Docute
+
+- [markdown-catalogue-parser](https://github.com/ulivz/markdown-catalogue-parser): 🛁 Git the category via raw markdown file. 
+- [html-css-transformer](https://github.com/ulivz/html-css-transformer): 🎊 Get css from html.
+- Feel free to add yours here :)
+
+
+## Prior art
+
+dmo wouldn't exist if it wasn't for excellent prior art, dmo is inspired by these projects:
+
+- [vue.js](https://vuejs.org/)
+- [docsify](https://github.com/QingWei-Li/docsify)
+- [docute](https://github.com/egoist/docute)
+
+
 ## TODO 
 
 - Highlight
+- Mode with multiple choices 
 
 
 ## Contributing
