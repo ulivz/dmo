@@ -69,7 +69,10 @@ npm i dmo --save
 - Type: `string`
 - Required: `true`
 
-  REPL's input initial value.
+  REPL's input initial value. it also supports reading Github files as input, such as:
+  
+  - [https://github.com/vuejs/vue/blob/dev/src/core/index.js](https://github.com/vuejs/vue/blob/dev/src/core/index.js)
+  - [$github/vuejs/vue/dev/src/core/index.js](https://github.com/vuejs/vue/blob/dev/src/core/index.js)
 
 ##### title
 
@@ -113,7 +116,6 @@ npm i dmo --save
 ## TODO 
 
 - Highlight
-- Support asynchronous input.
 
 
 ## Contributing

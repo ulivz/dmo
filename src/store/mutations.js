@@ -1,4 +1,5 @@
 import parseOptions from './parseOptions'
+import { getGithubRaw } from '../util/github-raw'
 
 const noop = raw => raw
 
@@ -21,6 +22,18 @@ const mutations = {
     if (!state.activeTransformer) {
       state.activeTransformer = noop
     }
+  },
+  SET_INPUT (state, input) {
+    state.input = input
+  }
+}
+
+const actions = {
+  GET_GITHUB_FILE_INPUT({ commit }, path) {
+    return getGithubRaw(path)
+      .then(response => {
+        commit('SET_INPUT', response.body)
+      })
   }
 }
 
@@ -28,6 +41,7 @@ export default function initStateAndMutations(options) {
   Object.assign(state, parseOptions(options))
   return {
     state,
+    actions,
     mutations
   }
 }

@@ -10,49 +10,44 @@ function serializeBody(body) {
   }
 }
 
-export default {
+export function get(url) {
+  return new Promise((resolve, reject) => {
+    const obj = new XMLHttpRequest();
+    obj.open('GET', url, true);
+    obj.onload = () => {
+      if (obj.status >= 200 || obj.status < 400) {
+        return resolve({
+          status: obj.status,
+          body: obj.response
+        })
+      }
+      reject({
+        status: obj.status,
+        body: obj.response
+      })
+    }
+    obj.send();
+  })
+}
 
-  get(url) {
-    return new Promise((resolve, reject) => {
-      const obj = new XMLHttpRequest();
-      obj.open('GET', url, true);
-      obj.onreadystatechange = function () {
-        if (obj.readyState == 4 && obj.status == 200 || obj.status == 304) {
-          resolve({
-            status,
-            response: obj.response
-          })
-        } else {
-          reject({
-            status,
-            response: obj.response
-          })
-        }
-      };
-      obj.send();
-    });
-  },
-
-  // Now it's uesless
-  post: function (url, body) {
-    return new Promise((resolve, reject) => {
-      const obj = new XMLHttpRequest();
-      obj.open('POST', url, true);
-      obj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      obj.onreadystatechange = function () {
-        if (obj.readyState == 4 && obj.status == 200 || obj.status == 304) {
-          resolve({
-            status,
-            response: obj.response
-          })
-        } else {
-          reject({
-            status,
-            response: obj.response
-          })
-        }
-      };
-      obj.send(serializeBody(body));
-    })
-  }
+// Now it's uesless
+export function post(url, body) {
+  return new Promise((resolve, reject) => {
+    const obj = new XMLHttpRequest();
+    obj.open('POST', url, true);
+    obj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    obj.onload = () => {
+      if (obj.status >= 200 || obj.status < 400) {
+        return resolve({
+          status: obj.status,
+          body: obj.response
+        })
+      }
+      reject({
+        status: obj.status,
+        body: obj.response
+      })
+    }
+    obj.send(serializeBody(body));
+  })
 }

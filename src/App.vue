@@ -19,10 +19,27 @@
 </template>
 
 <script>
-  import request from './util/fetch'
-  import { mapState, mapMutations } from 'vuex'
+  import { mapState, mapMutations, mapActions } from 'vuex'
   import header from './components/header.vue'
   import gradientBackground from './components/gradient-background.vue'
+
+  function isGithubResourceURL(input) {
+    let isUrl = false
+    if (input.startsWith('$github')) {
+      isUrl = true
+      input = input.slice(input.indexOf('$github') + 8)
+    } else if (input.startsWith('https://github.com/')) {
+      isUrl = true
+      input = input.replace('https://github.com/', '')
+    }
+    if (isUrl) {
+      input = input.replace('blob/', '')
+    }
+    return {
+      isUrl,
+      input
+    }
+  }
 
   export default {
     components: {
@@ -36,17 +53,27 @@
       }
     },
     created() {
-      if (this.input) {
-        this.userInput = this.input
+      const { input, isUrl } = isGithubResourceURL(this.input)
+
+      if (isUrl) {
+        this.GET_GITHUB_FILE_INPUT(input)
+      } else {
+        this.userInput = input
       }
+
       this.selectMode(this.modes[0].key)
-      request.get('https://raw.githubusercontent.com/vuejs/vue/dev/README.md', (data) => {
-        console.log(data)
-      })
+    },
+    watch: {
+      input(data) {
+        this.userInput = data
+      }
     },
     methods: {
       ...mapMutations([
         'selectMode'
+      ]),
+      ...mapActions([
+        'GET_GITHUB_FILE_INPUT'
       ]),
       inputFocus() {
         this.isFocus = true
@@ -125,6 +152,7 @@
         pre {
           width: 100%;
           height: 100%;
+          overflow: scroll;
           font-family: letter-gothic;
           padding: 10px;
           font-size: 16px;
