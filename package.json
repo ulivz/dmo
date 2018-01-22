@@ -10,6 +10,7 @@
     "prepublish": "npm run build"
   },
   "files": [
+    ".media",
     "dist"
   ],
   "main": "dist/dmo.js",
