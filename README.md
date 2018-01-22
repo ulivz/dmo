@@ -44,6 +44,8 @@ Of course, the default also supports the response:
   <img src=".media/iphoneX.png" width="300" height="" style=""/>
 </p>
 
+Check out the online [DEMO](http://www.v2js.com/dmo/)
+
 ## Install
 
 The recommendation is to use the [unpkg](https://unpkg.com/dmo) directly, of course, you can also use npm/yarn to download it:
@@ -71,8 +73,10 @@ npm i dmo --save
 
   REPL's input initial value. it also supports reading Github files as input, such as:
   
-  - [https://github.com/vuejs/vue/blob/dev/src/core/index.js](https://github.com/vuejs/vue/blob/dev/src/core/index.js)
-  - [$github/vuejs/vue/dev/src/core/index.js](https://github.com/vuejs/vue/blob/dev/src/core/index.js)
+  ```js
+  'https://github.com/vuejs/vue/blob/dev/src/core/index.js'  // Full path
+  '$github/vuejs/vue/dev/src/core/index.js'                  // Short cut
+   ```
 
 ##### title
 
