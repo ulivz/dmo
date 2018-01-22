@@ -38,12 +38,15 @@ Open the browser, then you can get a usable Babel REPL (_Check out the online [D
   <img src=".media/safari.png" height="" style=""/>
 </p>
 
-Of course, the default also supports the response:
+<details>
+<summary>Open the mobile snapshot</summary>
 
+Of course, the default also supports the response:
 <p align="center">
   <img src=".media/iphoneX.png" width="300" height="" style=""/>
 </p>
 
+</details>
 
 ## Install
 
