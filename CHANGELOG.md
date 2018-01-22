@@ -1,3 +1,14 @@
+<a name="1.0.11"></a>
+## [1.0.11](https://github.com/ulivz/demojs/compare/v1.0.10...v1.0.11) (2018-01-22)
+
+
+### Features
+
+* add custom fetch ([5e705c3](https://github.com/ulivz/demojs/commit/5e705c3))
+* **$core:** Add supoort for reading github file ([2a3b971](https://github.com/ulivz/demojs/commit/2a3b971))
+
+
+
 <a name="1.0.10"></a>
 ## [1.0.10](https://github.com/ulivz/demojs/compare/v1.0.9...v1.0.10) (2018-01-21)
 
