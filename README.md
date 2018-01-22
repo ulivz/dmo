@@ -118,7 +118,7 @@ npm i dmo --save
   An plain object, the key is the name of the mode, the value is the transform function corresponding to the mode, note that the transform accepts a string of the current input area as input, and the return value will display in the preview area.
 
 
-## Projects Using Docute
+## Projects Using Dmo
 
 - [markdown-catalogue-parser](https://github.com/ulivz/markdown-catalogue-parser): 🛁 Git the category via raw markdown file. 
 - [html-css-transformer](https://github.com/ulivz/html-css-transformer): 🎊 Get css from html.
