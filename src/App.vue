@@ -112,6 +112,9 @@
     overflow-x: hidden;
     font-family: letter-gothic;
     border: 1px solid #d7dde4;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     dmo-header {
 
     }
@@ -158,6 +161,9 @@
           border-style: dashed;
           &.focus {
             background-color: #f1f1f1;
+          }
+          &::-webkit-scrollbar {
+            display: none;
           }
         }
       }
