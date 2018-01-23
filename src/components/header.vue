@@ -72,6 +72,9 @@
       line-height: 44px;
       box-sizing: border-box;
       overflow-x: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
     .dmo-badge {
       position: fixed;

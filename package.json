@@ -1,13 +1,12 @@
 {
   "name": "dmo",
   "description": "Browser REPL generator",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "prepublish": "npm run build"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "files": [
     ".media",
@@ -19,7 +18,8 @@
     "highlight.js": "^9.12.0",
     "highlightjs": "^9.10.0",
     "nprogress": "^0.2.0",
-    "vue": "^2.4.4"
+    "vue": "^2.4.4",
+    "vuex": "^3.0.1"
   },
   "browserslist": [
     "> 1%",
