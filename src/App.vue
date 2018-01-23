@@ -121,11 +121,7 @@
       box-sizing: border-box;
       overflow: hidden;
       margin: 15px;
-      position: absolute;
-      top: 110px;
-      left: 0;
-      right: 0;
-      bottom: 51px;
+      height: calc(100vh - 110px - 51px);
       @extend %clear-fix;
       .edit, .preview {
         float: left;
@@ -183,6 +179,7 @@
   @include to-liquid-breakpoint($medium) {
     .layout {
       .layout-content {
+        height: calc(100vh - 138px - 51px);
         .edit, .preview {
           float: left;
           width: 100%;
