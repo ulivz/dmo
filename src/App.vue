@@ -4,9 +4,10 @@
     <dmo-header/>
     <div class="layout-content">
       <div class="edit">
-        <textarea @focus="inputFocus"
-                  @blur="inputBlur"
-                  v-model="userInput" :placeholder="placeholder"></textarea>
+        <V-Codemirror v-model="userInput"></V-Codemirror>
+        <!--<textarea @focus="inputFocus"-->
+                  <!--@blur="inputBlur"-->
+                  <!--v-model="userInput" :placeholder="placeholder"></textarea>-->
       </div>
       <div class="preview">
         <pre :class="{'focus': isFocus}">{{ result }}</pre>
@@ -130,19 +131,25 @@
         padding: 15px;
       }
       .edit {
-        textarea {
-          width: 100%;
+        .CodeMirror {
           height: 100%;
-          font-family: letter-gothic;
           font-size: 16px;
+          font-family: letter-gothic;
           padding: 10px;
-          border: 4px solid #000;
-          transition: all 0.3s ease;
-          &:focus {
-            background-color: #f1f1f1;
-            outline: none;
-          }
         }
+        /*textarea {*/
+          /*width: 100%;*/
+          /*height: 100%;*/
+          /*font-family: letter-gothic;*/
+          /*font-size: 16px;*/
+          /*padding: 10px;*/
+          /*border: 4px solid #000;*/
+          /*transition: all 0.3s ease;*/
+          /*&:focus {*/
+            /*background-color: #f1f1f1;*/
+            /*outline: none;*/
+          /*}*/
+        /*}*/
       }
       .preview {
         pre {

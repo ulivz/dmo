@@ -84,7 +84,8 @@ module.exports = {
   resolve: {
     alias: {
       'hljs': 'highlightjs/highlight.pack.js',
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'v-codemirror$': 'v-codemirror/dist/v-codemirror.es.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
