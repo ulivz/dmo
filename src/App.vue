@@ -113,6 +113,9 @@
     overflow-x: hidden;
     font-family: letter-gothic;
     border: 1px solid #d7dde4;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     dmo-header {
 
     }
@@ -136,6 +139,15 @@
           font-size: 16px;
           font-family: letter-gothic;
           padding: 10px;
+          border: 4px solid #000;
+          transition: all 0.3s ease;
+          &:focus {
+            background-color: #f1f1f1;
+            outline: none;
+          }
+          &::-webkit-scrollbar {
+            display: none;
+          }
         }
         /*textarea {*/
           /*width: 100%;*/
@@ -165,6 +177,9 @@
           border-style: dashed;
           &.focus {
             background-color: #f1f1f1;
+          }
+          &::-webkit-scrollbar {
+            display: none;
           }
         }
       }
