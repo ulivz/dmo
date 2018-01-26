@@ -4,10 +4,7 @@
     <dmo-header/>
     <div class="layout-content">
       <div class="edit">
-        <V-Codemirror v-model="userInput"></V-Codemirror>
-        <!--<textarea @focus="inputFocus"-->
-                  <!--@blur="inputBlur"-->
-                  <!--v-model="userInput" :placeholder="placeholder"></textarea>-->
+        <V-Codemirror v-model="userInput" @focus="inputFocus" @blur="inputBlur"></V-Codemirror>
       </div>
       <div class="preview">
         <pre :class="{'focus': isFocus}">{{ result }}</pre>
@@ -20,6 +17,7 @@
 </template>
 
 <script>
+  import { THEME } from 'v-codemirror'
   import { mapState, mapMutations, mapActions } from 'vuex'
   import header from './components/header.vue'
   import gradientBackground from './components/gradient-background.vue'
@@ -63,6 +61,7 @@
       }
 
       this.selectMode(this.modes[0].key)
+      console.log(THEME)
     },
     watch: {
       input(data) {
@@ -132,9 +131,11 @@
         width: 50%;
         height: 100%;
         padding: 15px;
+        transition: all .25s;
       }
       .edit {
         .CodeMirror {
+          background-color: #233;
           height: 100%;
           font-size: 16px;
           font-family: letter-gothic;
@@ -149,19 +150,6 @@
             display: none;
           }
         }
-        /*textarea {*/
-          /*width: 100%;*/
-          /*height: 100%;*/
-          /*font-family: letter-gothic;*/
-          /*font-size: 16px;*/
-          /*padding: 10px;*/
-          /*border: 4px solid #000;*/
-          /*transition: all 0.3s ease;*/
-          /*&:focus {*/
-            /*background-color: #f1f1f1;*/
-            /*outline: none;*/
-          /*}*/
-        /*}*/
       }
       .preview {
         pre {

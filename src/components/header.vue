@@ -4,18 +4,22 @@
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
     <dmo-menu :meau-list="modes" class="dmo-menu"/>
-    <a class="dmo-badge" :href="projectUrl" target="_blank" v-html="githubIcon"></a>
+    <a class="dmo-badge" :href="projectUrl" target="_blank">
+      <svg-icon name="github" class="svg-icon"></svg-icon>
+    </a>
   </header>
 </template>
 
 <script>
-  import menu from './menu.vue'
+  import dmoMenu from './menu.vue'
+  import SvgIcon from './SvgIcon'
   import { mapState } from 'vuex'
 
   export default {
     name: 'dmo-header',
     components: {
-      'dmo-menu': menu
+      dmoMenu,
+      SvgIcon
     },
     computed: {
       ...mapState([
