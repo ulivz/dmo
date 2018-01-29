@@ -7,6 +7,7 @@
         <vue-codemirror v-model="userInput"
                         mode="javascript"
                         @focus="inputFocus"
+                        @ready="handleInput"
                         @blur="inputBlur"></vue-codemirror>
       </div>
       <div class="preview">
@@ -55,16 +56,6 @@
       }
     },
     created() {
-      const { input, isUrl } = isGithubResourceURL(this.input)
-
-      if (isUrl) {
-        setTimeout(() => {
-          this.GET_GITHUB_FILE_INPUT(input)
-        }, 10)
-      } else {
-        this.userInput = input
-      }
-
       this.selectMode(this.modes[0].key)
     },
     watch: {
@@ -84,6 +75,14 @@
       },
       inputBlur() {
         this.isFocus = false
+      },
+      handleInput() {
+        const { input, isUrl } = isGithubResourceURL(this.input)
+        if (isUrl) {
+          this.GET_GITHUB_FILE_INPUT(input)
+        } else {
+          this.userInput = input
+        }
       }
     },
     computed: {
