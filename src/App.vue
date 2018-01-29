@@ -4,7 +4,10 @@
     <dmo-header/>
     <div class="layout-content">
       <div class="edit">
-        <V-Codemirror v-model="userInput" @focus="inputFocus" @blur="inputBlur"></V-Codemirror>
+        <vue-codemirror v-model="userInput"
+                        mode="javascript"
+                        @focus="inputFocus"
+                        @blur="inputBlur"></vue-codemirror>
       </div>
       <div class="preview">
         <pre :class="{'focus': isFocus}">{{ result }}</pre>
@@ -17,7 +20,7 @@
 </template>
 
 <script>
-  import { THEME } from 'v-codemirror'
+  import { themes } from 'vue-codemirror-component'
   import { mapState, mapMutations, mapActions } from 'vuex'
   import header from './components/header.vue'
   import gradientBackground from './components/gradient-background.vue'
@@ -55,13 +58,14 @@
       const { input, isUrl } = isGithubResourceURL(this.input)
 
       if (isUrl) {
-        this.GET_GITHUB_FILE_INPUT(input)
+        setTimeout(() => {
+          this.GET_GITHUB_FILE_INPUT(input)
+        }, 10)
       } else {
         this.userInput = input
       }
 
       this.selectMode(this.modes[0].key)
-      console.log(THEME)
     },
     watch: {
       input(data) {
