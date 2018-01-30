@@ -1,3 +1,23 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/ulivz/demojs/compare/v1.0.13...v1.1.1) (2018-01-30)
+
+
+### Bug Fixes
+
+* add missing package.json field ([81270ae](https://github.com/ulivz/demojs/commit/81270ae))
+* correct the usage of raw-loader ([c41ae01](https://github.com/ulivz/demojs/commit/c41ae01))
+* fix collapse in Chrome Mobile when focusing input and the keyboard slide up ([6007928](https://github.com/ulivz/demojs/commit/6007928))
+* only handle input when editor is ready ([cd5bdde](https://github.com/ulivz/demojs/commit/cd5bdde))
+
+
+### Features
+
+* handle for transform error ([580b236](https://github.com/ulivz/demojs/commit/580b236))
+* reprecate v-codemirror and use vue-codemirror-component ([0a0dca0](https://github.com/ulivz/demojs/commit/0a0dca0))
+* upgrade to v-codemirror ([931bbe0](https://github.com/ulivz/demojs/commit/931bbe0))
+
+
+
 <a name="1.0.13"></a>
 ## [1.0.13](https://github.com/ulivz/demojs/compare/v1.0.12...v1.0.13) (2018-01-22)
 
