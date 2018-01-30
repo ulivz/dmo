@@ -2,6 +2,7 @@
   "name": "dmo",
   "description": "Browser REPL generator",
   "version": "1.1.1",
+  "repository": "git",
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
   "scripts": {
@@ -15,9 +16,8 @@
   "main": "dist/dmo.js",
   "dependencies": {
     "clipboard": "^1.7.1",
-    "highlight.js": "^9.12.0",
-    "highlightjs": "^9.10.0",
     "nprogress": "^0.2.0",
+    "program-language-detector": "0.0.9",
     "vue": "^2.4.4",
     "vue-codemirror-component": "^1.1.0",
     "vue-inline": "^1.0.1"

@@ -5,7 +5,7 @@
     <div class="layout-content">
       <div class="edit">
         <vue-codemirror v-model="userInput"
-                        mode="javascript"
+                        :mode="inputLang"
                         @focus="inputFocus"
                         @ready="handleInput"
                         @blur="inputBlur"></vue-codemirror>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+  import { detect, LANG } from 'program-language-detector'
   import { themes } from 'vue-codemirror-component'
   import { mapState, mapMutations, mapActions } from 'vuex'
   import header from './components/header.vue'
@@ -65,7 +66,9 @@
     },
     methods: {
       ...mapMutations([
-        'SELECT_MODE'
+        'SELECT_MODE',
+        'SET_INPUT_LANG',
+        'SET_OUTPUT_LANG'
       ]),
       ...mapActions([
         'GET_GITHUB_FILE_INPUT'
@@ -94,14 +97,25 @@
         'activeMode',
         'placeholder',
         'username',
-        'userUrl'
+        'userUrl',
+        'inputLang',
+        'outputLang'
       ]),
       result() {
         let result
+        let inputDetectResult = detect(this.userInput)
+        if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
+          console.log(inputDetectResult)
+          this.SET_INPUT_LANG(inputDetectResult)
+        }
         try {
           result = this.activeTransformer(this.userInput)
         } catch (error) {
           result = error.message
+        }
+        let outputDetectResult = detect(result)
+        if (outputDetectResult !== this.outputLang) {
+          this.SET_OUTPUT_LANG(outputDetectResult)
         }
         return result
       }

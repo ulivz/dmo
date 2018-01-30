@@ -1,5 +1,6 @@
 import parseOptions from './parseOptions'
 import { getGithubRaw } from '../util/github-raw'
+import { LANG } from 'program-language-detector'
 
 const noop = raw => raw
 
@@ -12,7 +13,9 @@ const state = {
   activeTransformer: null,
   placeholder: null,
   transformers: null,
-  modes: null
+  modes: null,
+  inputLang: LANG.JavaScript,
+  outputLang: LANG.JavaScript
 }
 
 const mutations = {
@@ -22,6 +25,12 @@ const mutations = {
     if (!state.activeTransformer) {
       state.activeTransformer = noop
     }
+  },
+  SET_INPUT_LANG(state, lang) {
+    state.inputLang = lang
+  },
+  SET_OUTPUT_LANG(state, lang) {
+    state.outputLang = lang
   },
   SET_INPUT (state, input) {
     state.input = input
