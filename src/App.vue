@@ -21,6 +21,11 @@
 </template>
 
 <script>
+  import 'codemirror/mode/htmlmixed/htmlmixed.js'
+  import 'codemirror/mode/javascript/javascript.js'
+  import 'codemirror/mode/css/css.js'
+  import 'codemirror/theme/monokai.css'
+
   import { detect, LANG } from 'program-language-detector'
   import { themes } from 'vue-codemirror-component'
   import { mapState, mapMutations, mapActions } from 'vuex'
