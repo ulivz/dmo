@@ -18,8 +18,8 @@
     "highlight.js": "^9.12.0",
     "highlightjs": "^9.10.0",
     "nprogress": "^0.2.0",
-    "v-codemirror": "^1.0.10",
     "vue": "^2.4.4",
+    "vue-codemirror-component": "^1.1.0",
     "vue-inline": "^1.0.1"
   },
   "browserslist": [
@@ -30,6 +30,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
     "cross-env": "^5.0.5",
