@@ -16,7 +16,7 @@ const state = {
 }
 
 const mutations = {
-  selectMode (state, mode) {
+  SELECT_MODE (state, mode) {
     state.activeMode = mode
     state.activeTransformer = state.transformers[mode]
     if (!state.activeTransformer) {
@@ -33,6 +33,9 @@ const actions = {
     return getGithubRaw(path)
       .then(response => {
         commit('SET_INPUT', response.body)
+      })
+      .catch(error => {
+        commit('SET_INPUT', error)
       })
   }
 }

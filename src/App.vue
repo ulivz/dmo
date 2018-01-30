@@ -56,7 +56,7 @@
       }
     },
     created() {
-      this.selectMode(this.modes[0].key)
+      this.SELECT_MODE(this.modes[0].key)
     },
     watch: {
       input(data) {
@@ -65,7 +65,7 @@
     },
     methods: {
       ...mapMutations([
-        'selectMode'
+        'SELECT_MODE'
       ]),
       ...mapActions([
         'GET_GITHUB_FILE_INPUT'
@@ -97,7 +97,13 @@
         'userUrl'
       ]),
       result() {
-        return this.activeTransformer(this.userInput)
+        let result
+        try {
+          result = this.activeTransformer(this.userInput)
+        } catch (error) {
+          result = error.message
+        }
+        return result
       }
     }
   }
