@@ -23,48 +23,52 @@
 <script lang="ts">
   import { Vue } from "vue-property-decorator";
 
+  // codemirror
   import 'codemirror/mode/htmlmixed/htmlmixed.js'
   import 'codemirror/mode/javascript/javascript.js'
   import 'codemirror/mode/css/css.js'
   import 'codemirror/theme/monokai.css'
 
-  import { detect, LANG } from 'program-language-detector'
-  import { themes } from 'vue-codemirror-component'
-  import { mapState, mapMutations, mapActions } from 'vuex'
+  // compnents
   import DmoHeader from './components/header.vue'
   import Gradientbackground from './components/gradient-background.vue'
 
-  function isGithubResourceURL(input) {
-    let isUrl = false
-    if (input.startsWith('$github')) {
-      isUrl = true
-      input = input.slice(input.indexOf('$github') + 8)
-    } else if (input.startsWith('https://github.com/')) {
-      isUrl = true
-      input = input.replace('https://github.com/', '')
-    }
-    if (isUrl) {
-      input = input.replace('blob/', '')
-    }
-    return {
-      isUrl,
-      input
-    }
-  }
+  import { mapState, mapMutations, mapActions } from 'vuex'
+  import { State, Getter, Action, Mutation } from 'vuex-class'
+  import { detect, LANG } from 'program-language-detector'
+  import { themes } from 'vue-codemirror-component'
+  import { isGithubResourceURL } from './util/github-raw'
+  import { Transformer } from './store/index'
 
   export default class App extends Vue {
+
+    @State('input.title') title
+    @State('input.input') input
+    @State('input.placeholder') placeholder
+    @State('input.inputLang') inputLang
+    @State('input.outputLang') outputLang
+
+    @State('user.username') username
+    @State('user.userUrl') userUrl
+
+    @State('transform.activeMode') activeMode
+    @State('transform.modes') modes
+
+    @Mutation('SELECT_MODE') SELECT_MODE
+    @Mutation('SET_INPUT_LANG') SET_INPUT_LANG
+    @Mutation('SET_OUTPUT_LANG') SET_OUTPUT_LANG
+
+    @Action('GET_GITHUB_FILE_INPUT') GET_GITHUB_FILE_INPUT
+
+    @Getter('activeTransformer') activeTransformer
 
     components: {
       DmoHeader,
       Gradientbackground
     }
 
-    data() {
-      return {
-        userInput: '',
-        isFocus: false
-      }
-    }
+    userInput = ''
+    isFocus = false
 
     created() {
       this.SELECT_MODE(this.modes[0].key)
@@ -76,65 +80,42 @@
       }
     }
 
-    methods = {
-      ...mapMutations([
-        'SELECT_MODE',
-        'SET_INPUT_LANG',
-        'SET_OUTPUT_LANG'
-      ]),
-      ...mapActions([
-        'GET_GITHUB_FILE_INPUT'
-      ]),
-      inputFocus()
-      {
-        this.isFocus = true
-      },
-      inputBlur() {
-        this.isFocus = false
-      },
-      handleInput() {
-        const { input, isUrl } = isGithubResourceURL(this.input)
-        if (isUrl) {
-          this.GET_GITHUB_FILE_INPUT(input)
-        } else {
-          this.userInput = input
-        }
+    inputFocus() {
+      this.isFocus = true
+    }
+
+    inputBlur() {
+      this.isFocus = false
+    }
+
+    handleInput() {
+      const { input, isUrl } = isGithubResourceURL(this.input)
+      if (isUrl) {
+        this.GET_GITHUB_FILE_INPUT(input)
+      } else {
+        this.userInput = input
       }
     }
 
-    computed = {
-      ...mapState([
-        'input',
-        'activeTransformer',
-        'modes',
-        'title',
-        'activeMode',
-        'placeholder',
-        'username',
-        'userUrl',
-        'inputLang',
-        'outputLang'
-      ]),
-      result(){
-        let result
-        let inputDetectResult = detect(this.userInput)
-        if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
-          console.log(inputDetectResult)
-          this.SET_INPUT_LANG(inputDetectResult)
-        }
-        try {
-          result = this.activeTransformer(this.userInput)
-        }
-        catch
-          (error) {
-          result = error.message
-        }
-        let outputDetectResult = detect(result)
-        if (outputDetectResult !== this.outputLang) {
-          this.SET_OUTPUT_LANG(outputDetectResult)
-        }
-        return result
+    get result() {
+      let result
+      let inputDetectResult = detect(this.userInput)
+      if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
+        console.log(inputDetectResult)
+        this.SET_INPUT_LANG(inputDetectResult)
       }
+      try {
+        result = this.activeTransformer(this.userInput)
+      }
+      catch
+        (error) {
+        result = error.message
+      }
+      let outputDetectResult = detect(result)
+      if (outputDetectResult !== this.outputLang) {
+        this.SET_OUTPUT_LANG(outputDetectResult)
+      }
+      return result
     }
   }
 </script>

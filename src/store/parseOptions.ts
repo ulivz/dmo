@@ -1,79 +1,56 @@
+import { State, Mode, Transformers } from './index'
+import { Store } from 'vuex'
+import { noop } from '../util/shared'
+import * as types from './mutation-types'
+
 const GITHUB_BASE_URL = 'https://github.com'
 const DMO_URL = 'ulivz/dmo'
 
-type ITransformer = (input: string) => string;
-
-export interface ITransformers {
-  [key: string]: ITransformer
-}
-
-interface IDmoMode {
-  key: string;
-  text: string;
-  active: boolean;
-}
-
-export interface IDmoOption {
-  title?: string;
+interface Options {
+  title: string;
+  transformers: Transformers;
   placeholder?: string;
   input?: string;
-  transformers?: ITransformers;
-  modes?: string | string[] | IDmoMode[];
+  modes?: string | string[] | Mode[];
   username?: string;
   name?: string;
 }
 
-export interface IDmoState extends IDmoOption {
-  userUrl?: string;
-  projectUrl?: string;
-  activeMode?: IDmoMode;
-  activeTransformer?: ITransformer;
-  inputLang?: string;
-  outputLang?: string;
-}
+function parseOptions(store: Store<State>, options: Options = { title: '', transformers: [noop] }) {
 
-export default function parseOptions
-  ({
-     title,
-     placeholder,
-     input,
-     transformers,
-     modes,
-     username,
-     name,
-   }: IDmoOption = {}) {
-  const state: IDmoState = {}
+  let { title, placeholder, input, transformers, modes, username, name } = options
 
-  state.input = input
-  state.title = title
-  state.placeholder = placeholder
+  // input
+  store.commit(types.SET_TITLE, title)
+  store.commit(types.SET_PLACEHOLDER, placeholder)
+  store.commit(types.SET_INPUT, input)
 
-  // username, name, userUrl, projectUrl
-  state.username = username
-  state.name = name
-  state.userUrl = GITHUB_BASE_URL + '/' + (state.username || DMO_URL)
+  // user
+  let userUrl = GITHUB_BASE_URL + '/' + (username || DMO_URL)
+  let projectUrl
   if (!username || !name) {
-    state.projectUrl = state.userUrl
+    projectUrl = userUrl
   } else {
-    state.projectUrl = state.userUrl + '/' + state.name
+    projectUrl = userUrl + '/' + name
   }
+  store.commit(types.SET_USER, { username, name, userUrl, projectUrl })
 
-  // transformers, modes
-  state.transformers = transformers
+  // transform
+  store.commit(types.SET_TRANSFORMERS, transformers)
 
   if (!modes) {
     modes = Object.keys(transformers)
   }
 
   if (typeof modes === 'string') {
-    state.modes = [{
-      active: true,
+    modes = [{
       key: modes,
-      text: modes
+      text: modes,
+      active: true
     }]
 
   } else if (Array.isArray(modes)) {
-    state.modes = modes.map((mode, idx) => {
+    modes = modes.map((mode, idx) => {
       let active = false
       if (idx === 0) {
         active = true
