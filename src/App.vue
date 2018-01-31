@@ -33,7 +33,6 @@
   import DmoHeader from './components/header.vue'
   import Gradientbackground from './components/gradient-background.vue'
 
-  import { mapState, mapMutations, mapActions } from 'vuex'
   import { State, Getter, Action, Mutation } from 'vuex-class'
   import { detect, LANG } from 'program-language-detector'
   import { themes } from 'vue-codemirror-component'
@@ -75,7 +74,7 @@
     }
 
     watch = {
-      input(data) {
+      input(data: string) {
         this.userInput = data
       }
     }

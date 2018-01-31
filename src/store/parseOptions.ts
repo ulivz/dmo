@@ -16,7 +16,10 @@ interface Options {
   name?: string;
 }
 
-function parseOptions(store: Store<State>, options: Options = { title: '', transformers: [noop] }) {
+export default function parseOptions(store: Store<any>, options: Options = {
+  title: '',
+  transformers: { 'Dmo': noop }
+}) {
 
   let { title, placeholder, input, transformers, modes, username, name } = options
 
@@ -44,30 +47,31 @@ function parseOptions(store: Store<State>, options: Options = { title: '', trans
 
   if (typeof modes === 'string') {
     modes = [{
-      key: modes,
-      text: modes,
+      key: (modes as string),
+      text: (modes as string),
       active: true
     }]
 
   } else if (Array.isArray(modes)) {
-    modes = modes.map((mode, idx) => {
-      let active = false
+    modes = (modes as Array<string | Mode>).map((mode: string | Mode, idx: number) => {
+      let active: boolean = false
       if (idx === 0) {
         active = true
       }
       if (typeof mode === 'string') {
         return {
-          key: mode,
-          text: mode,
+          key: (mode as string),
+          text: (mode as string),
           active
         }
       }
       return {
         active,
-        ...mode
+        ...(mode as Mode)
       }
     })
   }
 
-  return state
+  store.commit(types.SET_MODES, modes)
+
 }

@@ -4,19 +4,24 @@ import { Mode, Transformer, Transformers } from '../index'
 import * as types from '../mutation-types'
 
 export interface State {
-  modes?: string | string[] | Mode[];
   transformers?: Transformers;
+  modes?: Mode[];
   activeMode?: string;
 }
 
 const state: State = {
   transformers: null,
-  checkoutStatus: null
+  modes: null,
+  activeMode: null
 }
 
 const mutations = {
   [types.SET_TRANSFORMERS] (state: State, transformers: Transformers) {
     state.transformers = transformers
+  },
+
+  [types.SET_MODES] (state: State, modes: Mode[]) {
+    state.modes = modes
   },
 
   [types.SELECT_MODE] (state: State, mode: string) {

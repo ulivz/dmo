@@ -7,6 +7,7 @@ export const SET_OUTPUT_LANG = 'SET_OUTPUT_LANG'
 
 // transform
 export const SET_TRANSFORMERS = 'SET_TRANSFORMERS'
+export const SET_MODES = 'SET_MODES'
 export const SELECT_MODE = 'SELECT_MODE'
 
 // user

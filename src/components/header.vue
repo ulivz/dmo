@@ -11,34 +11,27 @@
 </template>
 
 <script lang="ts">
-  import { Vue, Component, Prop } from "vue-property-decorator";
-  import dmoMenu from './menu.vue'
+  import { Vue, Component, Prop } from "vue-property-decorator"
+  import { State, Getter, Action, Mutation } from 'vuex-class'
+  import DmoMenu from './menu.vue'
   import SvgIcon from './SvgIcon'
   import { mapState } from 'vuex'
 
   @Component
   export default class DmoHeader extends Vue {
 
-    components = {
-      dmoMenu,
-      SvgIcon
+    @State('title') title
+    @State('modes') modes
+    @State('projectUrl') projectUrl
+
+    components = { DmoMenu, SvgIcon }
+
+    get titlep1() {
+      return this.title.slice(0, this.title.length - 1)
     }
 
-    computed = {
-      ...mapState([
-        'title',
-        'modes',
-        'projectUrl'
-      ]),
-      titlep1 () {
-        return this.title.slice(0, this.title.length - 1)
-      },
-      titlep2() {
-        return this.title.charAt(this.title.length - 1)
-      },
-      githubIcon() {
-        return this.$icon('github')
-      }
+    get titlep2() {
+      return this.title.charAt(this.title.length - 1)
     }
   }
 </script>

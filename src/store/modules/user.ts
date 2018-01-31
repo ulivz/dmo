@@ -3,8 +3,8 @@ import * as types from '../mutation-types'
 export interface State {
   username: string;
   name: string;
-  userUrl: null;
-  projectUrl: null;
+  userUrl: string;
+  projectUrl: string;
 }
 
 const state: State = {

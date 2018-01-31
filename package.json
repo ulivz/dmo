@@ -19,11 +19,13 @@
     "@types/es6-shim": "^0.31.35",
     "clipboard": "^1.7.1",
     "nprogress": "^0.2.0",
-    "program-language-detector": "0.0.9",
-    "vue": "^2.4.4",
+    "program-language-detector": "0.0.10",
+    "vue": "^2.5.13",
     "vue-codemirror-component": "^1.1.0",
     "vue-inline": "^1.0.1",
-    "vue-property-decorator": "^6.0.0"
+    "vue-property-decorator": "^6.0.0",
+    "vuex": "^3.0.1",
+    "vuex-class": "^0.3.0"
   },
   "browserslist": [
     "> 1%",

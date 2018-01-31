@@ -26,7 +26,7 @@ export interface State {
 export interface Mode {
   key: string;
   text: string;
-  active: boolean;
+  active?: boolean;
 }
 
 export type Transformer = (input: string) => string;

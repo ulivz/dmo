@@ -10,9 +10,9 @@ function serializeBody(body: Object): string {
     throw new Error('Invalid body: ' + body)
   }
   let result = ''
-  for (const [key, index]  of Object.keys(body).entries()) {
+  Object.keys(body).forEach((key, index) => {
     result += `${index !== 0 ? '&' : ''}${key}=${body[key]}`
-  }
+  })
   return result
 }
 

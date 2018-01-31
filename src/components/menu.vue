@@ -10,31 +10,24 @@
 </template>
 
 <script lang="ts">
-  import { Vue, Component, Prop } from "vue-property-decorator";
+  import { Vue, Component, Prop } from "vue-property-decorator"
+  import { State, Getter, Action, Mutation } from 'vuex-class'
   import { mapMutations } from 'vuex'
 
-  export default class DmoHeader extends Vue {
+  export default class DmoMenu extends Vue {
     @Prop meauList: Array
+    @Mutation('SELECT_MODE') SELECT_MODE
 
-    data() {
-      return {
-        activeItem: null
-      }
-    }
+    activeItem = null
 
     created() {
       this.activeItem = this.meauList.find(item => item.active)
     }
 
-    methods = {
-      ...mapMutations([
-        'selectMode'
-      ]),
-      select(item) {
-        if (item !== this.activeItem) {
-          this.activeItem = item
-          this.selectMode(item.key)
-        }
+    select(item) {
+      if (item !== this.activeItem) {
+        this.activeItem = item
+        this.SELECT_MODE(item.key)
       }
     }
   }
