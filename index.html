@@ -8,7 +8,7 @@
 <body>
 <div id="app"></div>
 <script src="/dist/dmo.js"></script>
-<script src="https://unpkg.com/@babel/standalone@7.0.0-beta.38/babel.min.js"></script>
+<!--<script src="https://unpkg.com/@babel/standalone@7.0.0-beta.38/babel.min.js"></script>-->
 <script>
   window.dmo({
     title: 'Babel REPL',
@@ -16,7 +16,8 @@
     input: 'https://github.com/vuejs/vue/blob/dev/src/core/index.js',
     transformers: {
       es2015: function (raw) {
-        return Babel.transform(raw, { presets: ['es2015'] }).code;
+        // return Babel.transform(raw, { presets: ['es2015'] }).code;
+        return raw;
       }
     }
   })

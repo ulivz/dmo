@@ -2,14 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import Plugins from './plugins'
 import initializeStore from './store'
-import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import './assets/fonts/font.css'
 
 Vue.use(Plugins)
 
-NProgress.start();
-NProgress.done();
 
 function dmo(options) {
   new Vue({
