@@ -7,7 +7,6 @@ import './assets/fonts/font.css'
 
 Vue.use(Plugins)
 
-
 function dmo(options) {
   new Vue({
     el: '#app',
@@ -16,5 +15,5 @@ function dmo(options) {
   })
 }
 
-window.dmo = dmo
+(<any>window).dmo = dmo
 export default dmo

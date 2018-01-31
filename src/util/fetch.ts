@@ -1,11 +1,11 @@
 import { isPlainObject } from './shared'
 
-function serializeBody(body) {
+function serializeBody(body: Object) {
   if (!isPlainObject(body)) {
     throw new Error('Invalid body: ' + body)
   }
   let result = ''
-  for (let { key, index } of Object.keys(body).entries()) {
+  for (const [key, index]  of Object.keys(body).entries()) {
     result += `${index !== 0 ? '&' : ''}${key}=${body[key]}`
   }
 }

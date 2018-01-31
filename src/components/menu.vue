@@ -9,22 +9,24 @@
   </ul>
 </template>
 
-<script>
+<script lang="ts">
+  import { Vue, Component, Prop } from "vue-property-decorator";
   import { mapMutations } from 'vuex'
-  export default {
-    name: 'dmo-header',
+
+  export default class DmoHeader extends Vue {
+    @Prop meauList: Array
+
     data() {
       return {
         activeItem: null
       }
-    },
-    props: {
-      meauList: Array
-    },
+    }
+
     created() {
       this.activeItem = this.meauList.find(item => item.active)
-    },
-    methods: {
+    }
+
+    methods = {
       ...mapMutations([
         'selectMode'
       ]),

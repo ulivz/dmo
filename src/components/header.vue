@@ -10,18 +10,21 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
+  import { Vue, Component, Prop } from "vue-property-decorator";
   import dmoMenu from './menu.vue'
   import SvgIcon from './SvgIcon'
   import { mapState } from 'vuex'
 
-  export default {
-    name: 'dmo-header',
-    components: {
+  @Component
+  export default class DmoHeader extends Vue {
+
+    components = {
       dmoMenu,
       SvgIcon
-    },
-    computed: {
+    }
+
+    computed = {
       ...mapState([
         'title',
         'modes',
@@ -30,7 +33,7 @@
       titlep1 () {
         return this.title.slice(0, this.title.length - 1)
       },
-      titlep2 () {
+      titlep2() {
         return this.title.charAt(this.title.length - 1)
       },
       githubIcon() {

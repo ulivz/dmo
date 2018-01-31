@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
     import hljs from 'hljs';
     import Clipboard from 'clipboard';
 

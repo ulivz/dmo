@@ -20,7 +20,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import { Vue } from "vue-property-decorator";
+
   import 'codemirror/mode/htmlmixed/htmlmixed.js'
   import 'codemirror/mode/javascript/javascript.js'
   import 'codemirror/mode/css/css.js'
@@ -29,8 +31,8 @@
   import { detect, LANG } from 'program-language-detector'
   import { themes } from 'vue-codemirror-component'
   import { mapState, mapMutations, mapActions } from 'vuex'
-  import header from './components/header.vue'
-  import gradientBackground from './components/gradient-background.vue'
+  import DmoHeader from './components/header.vue'
+  import Gradientbackground from './components/gradient-background.vue'
 
   function isGithubResourceURL(input) {
     let isUrl = false
@@ -50,26 +52,31 @@
     }
   }
 
-  export default {
+  export default class App extends Vue {
+
     components: {
-      'dmo-header': header,
-      'gradient-background': gradientBackground
-    },
-    data () {
+      DmoHeader,
+      Gradientbackground
+    }
+
+    data() {
       return {
         userInput: '',
         isFocus: false
       }
-    },
+    }
+
     created() {
       this.SELECT_MODE(this.modes[0].key)
-    },
-    watch: {
+    }
+
+    watch = {
       input(data) {
         this.userInput = data
       }
-    },
-    methods: {
+    }
+
+    methods = {
       ...mapMutations([
         'SELECT_MODE',
         'SET_INPUT_LANG',
@@ -78,7 +85,8 @@
       ...mapActions([
         'GET_GITHUB_FILE_INPUT'
       ]),
-      inputFocus() {
+      inputFocus()
+      {
         this.isFocus = true
       },
       inputBlur() {
@@ -92,8 +100,9 @@
           this.userInput = input
         }
       }
-    },
-    computed: {
+    }
+
+    computed = {
       ...mapState([
         'input',
         'activeTransformer',
@@ -106,7 +115,7 @@
         'inputLang',
         'outputLang'
       ]),
-      result() {
+      result(){
         let result
         let inputDetectResult = detect(this.userInput)
         if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
@@ -115,7 +124,9 @@
         }
         try {
           result = this.activeTransformer(this.userInput)
-        } catch (error) {
+        }
+        catch
+          (error) {
           result = error.message
         }
         let outputDetectResult = detect(result)

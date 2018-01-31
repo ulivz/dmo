@@ -1,19 +1,48 @@
 const GITHUB_BASE_URL = 'https://github.com'
 const DMO_URL = 'ulivz/dmo'
 
+type ITransformer = (input: string) => string;
 
+export interface ITransformers {
+  [key: string]: ITransformer
+}
+
+interface IDmoMode {
+  key: string;
+  text: string;
+  active: boolean;
+}
+
+export interface IDmoOption {
+  title?: string;
+  placeholder?: string;
+  input?: string;
+  transformers?: ITransformers;
+  modes?: string | string[] | IDmoMode[];
+  username?: string;
+  name?: string;
+}
+
+export interface IDmoState extends IDmoOption {
+  userUrl?: string;
+  projectUrl?: string;
+  activeMode?: IDmoMode;
+  activeTransformer?: ITransformer;
+  inputLang?: string;
+  outputLang?: string;
+}
 
 export default function parseOptions
   ({
+     title,
+     placeholder,
      input,
      transformers,
      modes,
-     title,
-     placeholder,
      username,
      name,
-   } = {}) {
-  const state = {}
+   }: IDmoOption = {}) {
+  const state: IDmoState = {}
 
   state.input = input
   state.title = title

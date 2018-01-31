@@ -2,34 +2,41 @@ import NProgress from 'nprogress'
 import parseOptions from './parseOptions'
 import { getGithubRaw } from '../util/github-raw'
 import { LANG } from 'program-language-detector'
+import { IDmoState } from './parseOptions'
 
 const noop = raw => raw
 
-const state = {
+const state: IDmoState = {
   input: null,
+
   username: null,
   name: null,
-  url: null,
+
+  userUrl: null,
+  projectUrl: null,
+
   activeMode: null,
   activeTransformer: null,
+
   placeholder: null,
   transformers: null,
   modes: null,
+
   inputLang: LANG.JavaScript,
   outputLang: LANG.JavaScript
 }
 
 const mutations = {
-  
+
   PROGRESS_START() {
-    NProgress.start();
+    NProgress.start()
   },
 
   PROGRESS_DONE() {
-    NProgress.done();
+    NProgress.done()
   },
 
-  SELECT_MODE (state, mode) {
+  SELECT_MODE (state: IDmoState, mode) {
     state.activeMode = mode
     state.activeTransformer = state.transformers[mode]
     if (!state.activeTransformer) {
@@ -37,15 +44,15 @@ const mutations = {
     }
   },
 
-  SET_INPUT_LANG(state, lang) {
+  SET_INPUT_LANG(state: IDmoState, lang) {
     state.inputLang = lang
   },
 
-  SET_OUTPUT_LANG(state, lang) {
+  SET_OUTPUT_LANG(state: IDmoState, lang) {
     state.outputLang = lang
   },
 
-  SET_INPUT (state, input) {
+  SET_INPUT (state: IDmoState, input) {
     state.input = input
   },
 
