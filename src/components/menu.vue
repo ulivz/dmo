@@ -10,13 +10,19 @@
 </template>
 
 <script lang="ts">
-  import { Vue, Component, Prop } from "vue-property-decorator"
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
   import { State, Getter, Action, Mutation } from 'vuex-class'
   import { mapMutations } from 'vuex'
 
+  @Component
   export default class DmoMenu extends Vue {
-    @Prop meauList: Array
+    @State('transform') transform
     @Mutation('SELECT_MODE') SELECT_MODE
+
+    get meauList() {
+      return this.transform.modes
+    }
 
     activeItem = null
 

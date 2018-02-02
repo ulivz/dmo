@@ -4,8 +4,9 @@
     <dmo-header/>
     <div class="layout-content">
       <div class="edit">
-        <vue-codemirror v-model="userInput"
-                        :mode="inputLang"
+        <vue-codemirror @change="SET_INPUT"
+                        :value="input.value"
+                        :mode="input.inputLang"
                         @focus="inputFocus"
                         @ready="handleInput"
                         @blur="inputBlur"></vue-codemirror>
@@ -15,7 +16,7 @@
       </div>
     </div>
     <footer class="layout-copy">
-      2016-2017 &copy; <a :href="userUrl">{{ (username || 'dmo').toUpperCase() }}</a>
+      2016-2017 &copy; <a :href="input.userUrl">{{ (user.username || 'dmo').toUpperCase() }}</a>
     </footer>
   </div>
 </template>
@@ -34,53 +35,34 @@
   import Gradientbackground from './components/gradient-background.vue'
 
   import { State, Getter, Action, Mutation } from 'vuex-class'
+  import Component from 'vue-class-component'
   import { detect, LANG } from 'program-language-detector'
   import { themes } from 'vue-codemirror-component'
   import { isGithubResourceURL } from './util/github-raw'
   import { Transformer } from './store/index'
 
+  import { State as InputState } from './store/modules/input'
+  import { State as UserState } from './store/modules/user'
+  import { State as TransformState } from './store/modules/transform'
+
+  @Component({
+    components: { DmoHeader, Gradientbackground }
+  })
   export default class App extends Vue {
 
-    @State('input') input
-//    @State('input.input') input
-//    @State('input.placeholder') placeholder
-//    @State('input.inputLang') inputLang
-//    @State('input.outputLang') outputLang
-
-    @State('user') user
-//    @State('user.username') username
-//    @State('user.userUrl') userUrl
-
-    @State('user') transform
-//    @State('transform.activeMode') activeMode
-//    @State('transform.modes') modes
+    @State('input') input: InputState
+    @State('user') user: UserState
+    @State('transform') transform: TransformState
 
     @Mutation('SELECT_MODE') SELECT_MODE
+    @Mutation('SET_INPUT') SET_INPUT
     @Mutation('SET_INPUT_LANG') SET_INPUT_LANG
     @Mutation('SET_OUTPUT_LANG') SET_OUTPUT_LANG
 
     @Action('GET_GITHUB_FILE_INPUT') GET_GITHUB_FILE_INPUT
-
     @Getter('activeTransformer') activeTransformer
 
-    components: {
-      DmoHeader,
-      Gradientbackground
-    }
-
-    userInput = ''
     isFocus = false
-
-    created() {
-      console.log(this.input)
-      this.SELECT_MODE(this.modes[0].key)
-    }
-
-    watch = {
-      input(data: string) {
-        this.userInput = data
-      }
-    }
 
     inputFocus() {
       this.isFocus = true
@@ -90,31 +72,34 @@
       this.isFocus = false
     }
 
+    created() {
+      this.SELECT_MODE(this.transform.modes[0].key)
+    }
+
     handleInput() {
-      const { input, isUrl } = isGithubResourceURL(this.input)
+      const { input, isUrl } = isGithubResourceURL(this.input.value)
       if (isUrl) {
         this.GET_GITHUB_FILE_INPUT(input)
       } else {
-        this.userInput = input
+        this.SET_INPUT(input)
       }
     }
 
     get result() {
       let result
-      let inputDetectResult = detect(this.userInput)
-      if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
-        console.log(inputDetectResult)
+      let inputDetectResult = detect(this.input.value)
+      if (inputDetectResult !== this.input.inputLang && inputDetectResult !== LANG.Unknown) {
         this.SET_INPUT_LANG(inputDetectResult)
       }
       try {
-        result = this.activeTransformer(this.userInput)
+        result = this.activeTransformer(this.input.value)
       }
       catch
         (error) {
         result = error.message
       }
       let outputDetectResult = detect(result)
-      if (outputDetectResult !== this.outputLang) {
+      if (outputDetectResult !== this.input.outputLang) {
         this.SET_OUTPUT_LANG(outputDetectResult)
       }
       return result

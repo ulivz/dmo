@@ -3,35 +3,39 @@
     <div class="dmo-title">
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
-    <dmo-menu :meau-list="modes" class="dmo-menu"/>
-    <a class="dmo-badge" :href="projectUrl" target="_blank">
+    <dmo-menu class="dmo-menu"/>
+    <a class="dmo-badge" :href="input.projectUrl" target="_blank">
       <svg-icon name="github" class="svg-icon"></svg-icon>
     </a>
   </header>
 </template>
 
 <script lang="ts">
-  import { Vue, Component, Prop } from "vue-property-decorator"
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
   import { State, Getter, Action, Mutation } from 'vuex-class'
+
   import DmoMenu from './menu.vue'
   import SvgIcon from './SvgIcon'
   import { mapState } from 'vuex'
 
-  @Component
+  import { State as InputState } from '../store/modules/input'
+  import { State as UserState } from '../store/modules/user'
+  import { State as TransformState } from '../store/modules/transform'
+
+  @Component({
+    components: { DmoMenu, SvgIcon }
+  })
   export default class DmoHeader extends Vue {
-
-    @State('title') title
-    @State('modes') modes
-    @State('projectUrl') projectUrl
-
-    components = { DmoMenu, SvgIcon }
+    @State('input') input: InputState
+    @State('transform') transform: TransformState
 
     get titlep1() {
-      return this.title.slice(0, this.title.length - 1)
+      return this.input.title.slice(0, this.input.title.length - 1)
     }
 
     get titlep2() {
-      return this.title.charAt(this.title.length - 1)
+      return this.input.title.charAt(this.input.title.length - 1)
     }
   }
 </script>

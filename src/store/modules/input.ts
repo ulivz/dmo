@@ -4,17 +4,18 @@ import * as types from '../mutation-types'
 import { getGithubFileRawContent } from '../../util/github-raw'
 
 export interface State {
+  value: string;
   title: string;
-  input: string;
   placeholder: string;
   inputLang?: string,
   outputLang?: string
 }
 
+
 // state
 const state: State = {
+  value: '',
   title: '',
-  input: '',
   placeholder: '',
   inputLang: LANG.JavaScript,
   outputLang: LANG.JavaScript
@@ -28,7 +29,7 @@ const mutations = {
   },
 
   [types.SET_INPUT] (state: State, input: string) {
-    state.input = input
+    state.value = input
   },
 
   [types.SET_PLACEHOLDER] (state: State, placeholder: string) {
