@@ -41,17 +41,19 @@
 
   export default class App extends Vue {
 
-    @State('input.title') title
-    @State('input.input') input
-    @State('input.placeholder') placeholder
-    @State('input.inputLang') inputLang
-    @State('input.outputLang') outputLang
+    @State('input') input
+//    @State('input.input') input
+//    @State('input.placeholder') placeholder
+//    @State('input.inputLang') inputLang
+//    @State('input.outputLang') outputLang
 
-    @State('user.username') username
-    @State('user.userUrl') userUrl
+    @State('user') user
+//    @State('user.username') username
+//    @State('user.userUrl') userUrl
 
-    @State('transform.activeMode') activeMode
-    @State('transform.modes') modes
+    @State('user') transform
+//    @State('transform.activeMode') activeMode
+//    @State('transform.modes') modes
 
     @Mutation('SELECT_MODE') SELECT_MODE
     @Mutation('SET_INPUT_LANG') SET_INPUT_LANG
@@ -70,6 +72,7 @@
     isFocus = false
 
     created() {
+      console.log(this.input)
       this.SELECT_MODE(this.modes[0].key)
     }
 
