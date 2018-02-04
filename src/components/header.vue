@@ -4,7 +4,7 @@
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
     <dmo-menu class="dmo-menu"/>
-    <a class="dmo-badge" :href="projectUrl" target="_blank">
+    <a class="dmo-badge gradient-background" :href="projectUrl" target="_blank">
       <svg-icon name="github" class="svg-icon"></svg-icon>
     </a>
   </header>

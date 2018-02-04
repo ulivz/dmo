@@ -1,10 +1,10 @@
 <template>
   <div class="cm-s-mdn-like">
     <pre :class="{bg: bg}"><code :class="lang" ref="code">{{ code }}</code></pre>
-    <!--<span class="copy" @click="clip">-->
-    <!--<Icon type="clipboard" size="18" v-show="!copied"></Icon>-->
-    <!--<Icon type="checkmark" size="18" v-show="copied" style="color:#5cb85c"></Icon>-->
-    <!--</span>-->
+    <span class="copy" @click="clip">
+      <svg-icon name="clipboard" v-show="!copied" class="clipboard"></svg-icon>
+      <svg-icon name="checkmark" v-show="copied" class="checkmark"></svg-icon>
+    </span>
   </div>
 </template>
 
@@ -15,9 +15,11 @@
   import 'codemirror/theme/mdn-like.css'
   import { normalizeModeName } from 'vue-codemirror-component'
 
+  import SvgIcon from './SvgIcon'
   import CodeMirror from 'codemirror'
+  import Clipboard from 'clipboard';
 
-  @Component
+  @Component({ components: { SvgIcon } })
   export default class VueCodemirrorPreview extends Vue {
     @Prop()
     bg: string
@@ -36,7 +38,21 @@
     }
 
     clip() {
+      const code = this.code.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+      const clipboard = new Clipboard('.copy', {
+        text () {
+          return code
+        }
+      })
 
+      clipboard.on('success', (e) => {
+        e.clearSelection()
+        clipboard.destroy()
+        this.copied = true
+        setTimeout(() => {
+          this.copied = false
+        }, 2000)
+      });
     }
   }
 
@@ -59,8 +75,8 @@
     border-radius: 0 0 3px 3px;
     padding: 2px 5px;
     position: absolute;
-    top: 5px;
-    right: 0;
+    top: 20px;
+    right: 18px;
     color: #b2b2b2;
     cursor: pointer;
   }
