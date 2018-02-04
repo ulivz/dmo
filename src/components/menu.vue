@@ -1,7 +1,7 @@
 <template>
   <ul class="dmo-menu">
-    <li v-for="item in meauList"
-        :class="{'active': activeItem === item}"
+    <li v-for="item in modes"
+        :class="{'active': activeMode === item}"
         :key="item.key"
         @click="select(item)">
       <a href="#">{{ item.text }}</a>
@@ -17,22 +17,18 @@
 
   @Component
   export default class DmoMenu extends Vue {
-    @State('transform') transform
+    @Getter('modes') modes
     @Mutation('SELECT_MODE') SELECT_MODE
 
-    get meauList() {
-      return this.transform.modes
-    }
-
-    activeItem = null
+    activeMode = null
 
     created() {
-      this.activeItem = this.meauList.find(item => item.active)
+      this.activeMode = this.modes.find(item => item.active)
     }
 
     select(item) {
-      if (item !== this.activeItem) {
-        this.activeItem = item
+      if (item !== this.activeMode) {
+        this.activeMode = item
         this.SELECT_MODE(item.key)
       }
     }

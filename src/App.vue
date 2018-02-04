@@ -5,8 +5,8 @@
     <div class="layout-content">
       <div class="edit">
         <vue-codemirror @change="SET_INPUT"
-                        :value="input.value"
-                        :mode="input.inputLang"
+                        :value="value"
+                        :mode="inputLang"
                         @focus="inputFocus"
                         @ready="handleInput"
                         @blur="inputBlur"></vue-codemirror>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <footer class="layout-copy">
-      2016-2017 &copy; <a :href="input.userUrl">{{ (user.username || 'dmo').toUpperCase() }}</a>
+      2016-2017 &copy; <a :href="userUrl">{{ (username || 'dmo').toUpperCase() }}</a>
     </footer>
   </div>
 </template>
@@ -41,18 +41,10 @@
   import { isGithubResourceURL } from './util/github-raw'
   import { Transformer } from './store/index'
 
-  import { State as InputState } from './store/modules/input'
-  import { State as UserState } from './store/modules/user'
-  import { State as TransformState } from './store/modules/transform'
-
   @Component({
     components: { DmoHeader, Gradientbackground }
   })
   export default class App extends Vue {
-
-    @State('input') input: InputState
-    @State('user') user: UserState
-    @State('transform') transform: TransformState
 
     @Mutation('SELECT_MODE') SELECT_MODE
     @Mutation('SET_INPUT') SET_INPUT
@@ -61,6 +53,18 @@
 
     @Action('GET_GITHUB_FILE_INPUT') GET_GITHUB_FILE_INPUT
     @Getter('activeTransformer') activeTransformer
+
+    // input
+    @Getter('value') value
+    @Getter('inputLang') inputLang
+    @Getter('inputLang') outputLang
+
+    // transform
+    @Getter('modes') modes
+
+    // user
+    @Getter('userUrl') userUrl
+    @Getter('username') username
 
     isFocus = false
 
@@ -73,11 +77,11 @@
     }
 
     created() {
-      this.SELECT_MODE(this.transform.modes[0].key)
+      this.SELECT_MODE(this.modes[0].key)
     }
 
     handleInput() {
-      const { input, isUrl } = isGithubResourceURL(this.input.value)
+      const { input, isUrl } = isGithubResourceURL(this.value)
       if (isUrl) {
         this.GET_GITHUB_FILE_INPUT(input)
       } else {
@@ -87,19 +91,19 @@
 
     get result() {
       let result
-      let inputDetectResult = detect(this.input.value)
-      if (inputDetectResult !== this.input.inputLang && inputDetectResult !== LANG.Unknown) {
+      let inputDetectResult = detect(this.value)
+      if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
         this.SET_INPUT_LANG(inputDetectResult)
       }
       try {
-        result = this.activeTransformer(this.input.value)
+        result = this.activeTransformer(this.value)
       }
       catch
         (error) {
         result = error.message
       }
       let outputDetectResult = detect(result)
-      if (outputDetectResult !== this.input.outputLang) {
+      if (outputDetectResult !== this.outputLang) {
         this.SET_OUTPUT_LANG(outputDetectResult)
       }
       return result

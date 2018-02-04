@@ -4,7 +4,7 @@
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
     <dmo-menu class="dmo-menu"/>
-    <a class="dmo-badge" :href="input.projectUrl" target="_blank">
+    <a class="dmo-badge" :href="projectUrl" target="_blank">
       <svg-icon name="github" class="svg-icon"></svg-icon>
     </a>
   </header>
@@ -19,23 +19,19 @@
   import SvgIcon from './SvgIcon'
   import { mapState } from 'vuex'
 
-  import { State as InputState } from '../store/modules/input'
-  import { State as UserState } from '../store/modules/user'
-  import { State as TransformState } from '../store/modules/transform'
-
   @Component({
     components: { DmoMenu, SvgIcon }
   })
   export default class DmoHeader extends Vue {
-    @State('input') input: InputState
-    @State('transform') transform: TransformState
+    @Getter('title') title
+    @Getter('projectUrl') projectUrl
 
     get titlep1() {
-      return this.input.title.slice(0, this.input.title.length - 1)
+      return this.title.slice(0, this.title.length - 1)
     }
 
     get titlep2() {
-      return this.input.title.charAt(this.input.title.length - 1)
+      return this.title.charAt(this.title.length - 1)
     }
   }
 </script>

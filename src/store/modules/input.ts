@@ -11,7 +11,6 @@ export interface State {
   outputLang?: string
 }
 
-
 // state
 const state: State = {
   value: '',
@@ -19,6 +18,15 @@ const state: State = {
   placeholder: '',
   inputLang: LANG.JavaScript,
   outputLang: LANG.JavaScript
+}
+
+// getters
+const getters = {
+  value: (state: State) => state.value,
+  title: (state: State) => state.title,
+  inputLang: (state: State) => state.inputLang || LANG.JavaScript,
+  outputLang: (state: State) => state.outputLang || LANG.JavaScript,
+  placeholder: (state: State) => state.placeholder
 }
 
 // mutations
@@ -62,6 +70,7 @@ const actions = {
 
 export default {
   state,
+  getters,
   actions,
   mutations
 }

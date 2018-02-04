@@ -14,6 +14,13 @@ const state: State = {
   projectUrl: ''
 }
 
+const getters = {
+  username: (state: State) => state.username,
+  name: (state: State) => state.name,
+  userUrl: (state: State) => state.userUrl,
+  projectUrl: (state: State) => state.projectUrl
+}
+
 const mutations = {
   [types.SET_USER] (state: State, payload: State) {
     state.username = payload.username
@@ -25,5 +32,6 @@ const mutations = {
 
 export default {
   state,
+  getters,
   mutations
 }

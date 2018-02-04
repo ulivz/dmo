@@ -30,6 +30,9 @@ const mutations = {
 }
 
 const getters = {
+  transformers: (state: State) => state.transformers,
+  modes: (state: State) => state.modes,
+  activeMode: (state: State) => state.activeMode,
   activeTransformer(state: State): Transformer {
     let transformer = state.transformers[state.activeMode]
     if (!transformer) {
