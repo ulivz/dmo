@@ -14,6 +14,7 @@ export interface State {
   transformers?: Transformers;
   modes?: Mode[];
   activeMode?: string;
+  detectLanguage?: boolean;
 }
 
 const state: State = {
@@ -24,7 +25,8 @@ const state: State = {
   outputLang: LANG.JavaScript,
   transformers: null,
   modes: null,
-  activeMode: null
+  activeMode: null,
+  detectLanguage: false
 }
 
 const mutations = {
@@ -58,6 +60,10 @@ const mutations = {
 
   [types.SELECT_MODE] (state: State, mode: string) {
     state.activeMode = mode
+  },
+
+  [types.SET_DETECT_LANGUAGE] (state: State, value: boolean) {
+    state.detectLanguage = value
   }
 }
 
@@ -70,6 +76,7 @@ const getters = {
   transformers: (state: State) => state.transformers,
   modes: (state: State) => state.modes,
   activeMode: (state: State) => state.activeMode,
+  detectLanguage: (state: State) => state.detectLanguage,
   activeTransformer(state: State): Transformer {
     let transformer = state.transformers[state.activeMode]
     if (!transformer) {

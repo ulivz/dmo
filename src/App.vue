@@ -52,15 +52,15 @@
     @Mutation('SET_OUTPUT_LANG') SET_OUTPUT_LANG
 
     @Action('GET_GITHUB_FILE_INPUT') GET_GITHUB_FILE_INPUT
-    @Getter('activeTransformer') activeTransformer
 
-    // input
+    // transform
     @Getter('value') value
     @Getter('inputLang') inputLang
     @Getter('inputLang') outputLang
+    @Getter('activeTransformer') activeTransformer
 
-    // transform
     @Getter('modes') modes
+    @Getter('detectLanguage') detectLanguage
 
     // user
     @Getter('userUrl') userUrl
@@ -91,9 +91,11 @@
 
     get result() {
       let result
-      let inputDetectResult = detect(this.value)
-      if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
-        this.SET_INPUT_LANG(inputDetectResult)
+      if (this.detectLanguage) {
+        let inputDetectResult = detect(this.value)
+        if (inputDetectResult !== this.inputLang && inputDetectResult !== LANG.Unknown) {
+          this.SET_INPUT_LANG(inputDetectResult)
+        }
       }
       try {
         result = this.activeTransformer(this.value)
@@ -101,9 +103,11 @@
       catch (error) {
         result = error.message
       }
-      let outputDetectResult = detect(result)
-      if (outputDetectResult !== this.outputLang) {
-        this.SET_OUTPUT_LANG(outputDetectResult)
+      if (this.detectLanguage) {
+        let outputDetectResult = detect(result)
+        if (outputDetectResult !== this.outputLang) {
+          this.SET_OUTPUT_LANG(outputDetectResult)
+        }
       }
       return result
     }

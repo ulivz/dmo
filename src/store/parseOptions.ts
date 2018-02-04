@@ -8,7 +8,7 @@ const DMO_URL = 'ulivz/dmo'
 
 type HighlightOption = {
   [mode in keyof Transformers]: string
-}
+  }
 
 interface Options {
   title: string;
@@ -18,7 +18,7 @@ interface Options {
   modes?: string | string[] | Mode[];
   username?: string;
   name?: string;
-  highlight?: HighlightOption
+  detectLanguage?: boolean;
 }
 
 export default function parseOptions(store: Store<any>, options: Options = {
@@ -26,13 +26,8 @@ export default function parseOptions(store: Store<any>, options: Options = {
   transformers: { 'Dmo': noop }
 }) {
 
-  let { title, placeholder, input, transformers, modes, username, name } = options
-
-  // input
-  store.commit(types.SET_TITLE, title)
-  store.commit(types.SET_PLACEHOLDER, placeholder)
-  store.commit(types.SET_INPUT, input)
-
+  let { title, placeholder, input, transformers, modes, username, name, detectLanguage } = options
+  
   // user
   let userUrl = GITHUB_BASE_URL + '/' + (username || DMO_URL)
   let projectUrl
@@ -44,7 +39,11 @@ export default function parseOptions(store: Store<any>, options: Options = {
   store.commit(types.SET_USER, { username, name, userUrl, projectUrl })
 
   // transform
+  store.commit(types.SET_TITLE, title)
+  store.commit(types.SET_PLACEHOLDER, placeholder)
+  store.commit(types.SET_INPUT, input)
   store.commit(types.SET_TRANSFORMERS, transformers)
+  store.commit(types.SET_DETECT_LANGUAGE, detectLanguage)
 
   if (!modes) {
     modes = Object.keys(transformers)
