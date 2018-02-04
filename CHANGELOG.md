@@ -1,3 +1,22 @@
+<a name="1.1.2"></a>
+## [1.1.2](http://git/compare/v1.1.1...v1.1.2) (2018-02-04)
+
+
+### Bug Fixes
+
+* first commit ([5ca8c85](http://git/commits/5ca8c85))
+* fix all errors of migration ([dffec9d](http://git/commits/dffec9d))
+
+
+### Features
+
+* Add clip feature ([8a831a8](http://git/commits/8a831a8))
+* Add new option: "detectLanguage" ([d0e8d9a](http://git/commits/d0e8d9a))
+* migrate 2 ([8e99933](http://git/commits/8e99933))
+* update mode when output lang changed ([10252f4](http://git/commits/10252f4))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/ulivz/demojs/compare/v1.0.13...v1.1.1) (2018-01-30)
 
