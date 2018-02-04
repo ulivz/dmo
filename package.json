@@ -10,7 +10,6 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "files": [
-    ".media",
     "dist"
   ],
   "main": "dist/dmo.js",

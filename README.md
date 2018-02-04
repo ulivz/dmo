@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#"><img width="400" src=".media/logo.png" alt="Dmo logo"></a>
+  <a href="#"><img width="400" src="https://github.com/ulivz/dmo/blob/master/.media/logo.png?raw=true" alt="Dmo logo"></a>
 </p>
 
 <p align="center">
@@ -35,14 +35,14 @@ Next, initialize it:
 Open the browser, then you can get a usable Babel REPL (_Check out the online [DEMO](http://www.v2js.com/dmo/)_):
 
 <p align="center">
-  <img src=".media/safari.png" height="" style=""/>
+  <img src="https://github.com/ulivz/dmo/blob/master/.media/safari.png?raw=true" height="" style=""/>
 </p>
 
 <details>
 <summary>Open the mobile snapshot</summary>
 
 <p align="center">
-  <img src=".media/iphoneX.png" width="300" height="" style=""/>
+  <img src="https://github.com/ulivz/dmo/blob/master/.media/iphoneX.png?raw=true" width="300" height="" style=""/>
 </p>
 
 </details>
@@ -66,14 +66,14 @@ npm i dmo --save
 - Required: `true`
 
   fields of options are as follows
-  
+
 ##### input
 
 - Type: `string`
 - Required: `true`
 
   REPL's input initial value. it also supports reading Github files as input, such as:
-  
+
   ```js
   'https://github.com/vuejs/vue/blob/dev/src/core/index.js'  // Full path
   '$github/vuejs/vue/dev/src/core/index.js'                  // Short cut
@@ -108,7 +108,7 @@ npm i dmo --save
 - Default: `Please enter your input`
 
   placeholder of the input area.
-  
+
 
 ##### transformers
 
@@ -120,7 +120,7 @@ npm i dmo --save
 
 ## Projects Using Dmo
 
-- [markdown-catalogue-parser](https://github.com/ulivz/markdown-catalogue-parser): 🛁 Git the category via raw markdown file. 
+- [markdown-catalogue-parser](https://github.com/ulivz/markdown-catalogue-parser): 🛁 Git the category via raw markdown file.
 - [html-css-transformer](https://github.com/ulivz/html-css-transformer): 🎊 Get css from html.
 - Feel free to add yours here :)
 
@@ -134,10 +134,10 @@ dmo wouldn't exist if it wasn't for excellent prior art, dmo is inspired by thes
 - [docute](https://github.com/egoist/docute)
 
 
-## TODO 
+## TODO
 
 - Highlight
-- Mode with multiple choices 
+- Mode with multiple choices
 
 
 ## Contributing
