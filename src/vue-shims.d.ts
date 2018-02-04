@@ -17,4 +17,6 @@ declare module "vue-inline" {
 
 declare module "vue-codemirror-component" {
   export const themes: string[]
+
+  export function normalizeModeName(...args: any[]): any
 }

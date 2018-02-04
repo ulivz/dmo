@@ -13,6 +13,7 @@
   import { Component, Vue, Prop } from 'vue-property-decorator'
   import 'codemirror/addon/runmode/runmode.js'
   import 'codemirror/theme/mdn-like.css'
+  import { normalizeModeName } from 'vue-codemirror-component'
 
   import CodeMirror from 'codemirror'
 
@@ -30,7 +31,8 @@
     copied: boolean = false
 
     updated() {
-      CodeMirror.runMode(this.code, this.lang, (this.$refs.code as any))
+      const mode = normalizeModeName(this.lang)
+      CodeMirror.runMode(this.code, mode, (this.$refs.code as any))
     }
 
     clip() {

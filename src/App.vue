@@ -12,7 +12,7 @@
                         @blur="inputBlur"></vue-codemirror>
       </div>
 
-      <vue-codemirror-preview class='preview' lang="javascript" :code="result"/>
+      <vue-codemirror-preview class='preview' :lang="outputLang" :code="result"/>
       <!--<div class="preview">-->
       <!--<pre :class="{'focus': isFocus}">{{ result }}</pre>-->
       <!--</div>-->
