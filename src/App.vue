@@ -11,9 +11,11 @@
                         @ready="handleInput"
                         @blur="inputBlur"></vue-codemirror>
       </div>
-      <div class="preview">
-        <pre :class="{'focus': isFocus}">{{ result }}</pre>
-      </div>
+
+      <vue-codemirror-preview class='preview' lang="javascript" :code="result"/>
+      <!--<div class="preview">-->
+      <!--<pre :class="{'focus': isFocus}">{{ result }}</pre>-->
+      <!--</div>-->
     </div>
     <footer class="layout-copy">
       2016-2017 &copy; <a :href="userUrl">{{ (username || 'dmo').toUpperCase() }}</a>
@@ -33,6 +35,7 @@
   // compnents
   import DmoHeader from './components/header.vue'
   import Gradientbackground from './components/gradient-background.vue'
+  import VueCodemirrorPreview from './components/vue-codemirror-preview.vue'
 
   import { State, Getter, Action, Mutation } from 'vuex-class'
   import Component from 'vue-class-component'
@@ -42,7 +45,7 @@
   import { Transformer } from './store/index'
 
   @Component({
-    components: { DmoHeader, Gradientbackground }
+    components: { DmoHeader, Gradientbackground, VueCodemirrorPreview }
   })
   export default class App extends Vue {
 
