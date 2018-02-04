@@ -98,8 +98,7 @@
       try {
         result = this.activeTransformer(this.value)
       }
-      catch
-        (error) {
+      catch (error) {
         result = error.message
       }
       let outputDetectResult = detect(result)

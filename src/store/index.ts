@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import plugins from './plugins'
 import mutations from './mutations'
 
-import input, { State as InputState } from './modules/input'
 import transform, { State as TransformState }from './modules/transform'
 import user, { State as UserState } from './modules/user'
 
@@ -13,14 +12,12 @@ export default new Vuex.Store<State>({
   plugins,
   mutations,
   modules: {
-    input,
     transform,
     user
   }
 })
 
 export interface State {
-  input: InputState;
   transform: TransformState;
   user: UserState
 }

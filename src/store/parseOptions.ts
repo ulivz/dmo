@@ -6,6 +6,10 @@ import * as types from './mutation-types'
 const GITHUB_BASE_URL = 'https://github.com'
 const DMO_URL = 'ulivz/dmo'
 
+type HighlightOption = {
+  [mode in keyof Transformers]: string
+}
+
 interface Options {
   title: string;
   transformers: Transformers;
@@ -14,6 +18,7 @@ interface Options {
   modes?: string | string[] | Mode[];
   username?: string;
   name?: string;
+  highlight?: HighlightOption
 }
 
 export default function parseOptions(store: Store<any>, options: Options = {
