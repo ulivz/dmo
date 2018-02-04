@@ -128,7 +128,6 @@
   .layout {
     overflow-x: hidden;
     font-family: letter-gothic;
-    border: 1px solid #d7dde4;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -195,7 +194,7 @@
       left: 0;
       right: 0;
       text-align: center;
-      padding: 10px 0 20px;
+      padding: 20px 0 10px;
       color: #9ea7b4;
       a {
         text-decoration: underline;

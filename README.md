@@ -10,6 +10,14 @@
   <a href="https://www.npmjs.com/package/dmo"><img src="https://img.shields.io/npm/l/dmo.svg" alt="License"></a>
 </p>
 
+# Features
+
+- _**Pure function driven 🍣**_
+- _**Support multiple modes 🎂**_
+- _**Minimalist Responsive Design 🍉**_
+- _**Detecting language 🧀**_
+- _**Power from [vue](https://github.com/vuejs/vue) and [TypeScript](https://github.com/Microsoft/TypeScript) ❤**_
+
 # Getting Started
 
 Let's use dmo to make a simple **[Babel](http://babeljs.io/) REPL**, first, write a simple html file, then inject the following necessary dependencies:
@@ -35,14 +43,14 @@ Next, initialize it:
 Open the browser, then you can get a usable Babel REPL (_Check out the online [DEMO](http://www.v2js.com/dmo/)_):
 
 <p align="center">
-  <img src="https://github.com/ulivz/dmo/blob/master/.media/safari.png?raw=true" height="" style=""/>
+  <img src="https://github.com/ulivz/dmo/blob/master/.media/desktop.png?raw=true" height="" style=""/>
 </p>
 
 <details>
 <summary>Open the mobile snapshot</summary>
 
 <p align="center">
-  <img src="https://github.com/ulivz/dmo/blob/master/.media/iphoneX.png?raw=true" width="300" height="" style=""/>
+  <img src="https://github.com/ulivz/dmo/blob/master/.media/mobile.png?raw=true" width="300" height="" style=""/>
 </p>
 
 </details>
@@ -117,6 +125,13 @@ npm i dmo --save
 
   An plain object, the key is the name of the mode, the value is the transform function corresponding to the mode, note that the transform accepts a string of the current input area as input, and the return value will display in the preview area.
 
+##### detectLanguage
+
+- Type: `boolean`
+- Required: `false`
+- Default: `false`
+
+  Whether to enable language detection with [program-language-detector](https://github.com/ulivz/program-language-detector), After the `v1.1.1`, it will automatically highlight `I / O` by the detecting resultdue to the real-time language detection will consume more performance, by default is `false`.
 
 ## Projects Using Dmo
 
@@ -129,16 +144,9 @@ npm i dmo --save
 
 dmo wouldn't exist if it wasn't for excellent prior art, dmo is inspired by these projects:
 
-- [vue.js](https://vuejs.org/)
+- [vue](https://github.com/vuejs/vue)
 - [docsify](https://github.com/QingWei-Li/docsify)
 - [docute](https://github.com/egoist/docute)
-
-
-## TODO
-
-- Highlight
-- Mode with multiple choices
-
 
 ## Contributing
 
@@ -147,7 +155,6 @@ dmo wouldn't exist if it wasn't for excellent prior art, dmo is inspired by thes
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
 
 
 ## Author

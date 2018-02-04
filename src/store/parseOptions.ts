@@ -8,7 +8,7 @@ const DMO_URL = 'ulivz/dmo'
 
 type HighlightOption = {
   [mode in keyof Transformers]: string
-  }
+}
 
 interface Options {
   title: string;
@@ -27,7 +27,7 @@ export default function parseOptions(store: Store<any>, options: Options = {
 }) {
 
   let { title, placeholder, input, transformers, modes, username, name, detectLanguage } = options
-  
+
   // user
   let userUrl = GITHUB_BASE_URL + '/' + (username || DMO_URL)
   let projectUrl
