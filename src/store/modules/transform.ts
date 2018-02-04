@@ -20,7 +20,7 @@ export interface State {
 const state: State = {
   value: '',
   title: '',
-  placeholder: '',
+  placeholder: 'Please enter your input',
   inputLang: LANG.JavaScript,
   outputLang: LANG.JavaScript,
   transformers: null,

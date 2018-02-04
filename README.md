@@ -131,7 +131,7 @@ npm i dmo --save
 - Required: `false`
 - Default: `false`
 
-  Whether to enable language detection with [program-language-detector](https://github.com/ulivz/program-language-detector), After the `v1.1.1`, it will automatically highlight `I / O` by the detecting resultdue to the real-time language detection will consume more performance, by default is `false`.
+  Whether to enable language detection with [program-language-detector](https://github.com/ulivz/program-language-detector), From `v1.1.2`, it will automatically highlight the `input / ouput` by the detecting result, due to the real-time language detection will consume more performance, by default is `false`.
 
 ## Projects Using Dmo
 
