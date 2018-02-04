@@ -3,39 +3,35 @@
     <div class="dmo-title">
       <a href="#">{{ titlep1 }}<b>{{ titlep2 }}</b><span><sup>&copy;</sup></span></a>
     </div>
-    <dmo-menu :meau-list="modes" class="dmo-menu"/>
+    <dmo-menu class="dmo-menu"/>
     <a class="dmo-badge" :href="projectUrl" target="_blank">
       <svg-icon name="github" class="svg-icon"></svg-icon>
     </a>
   </header>
 </template>
 
-<script>
-  import dmoMenu from './menu.vue'
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import { State, Getter, Action, Mutation } from 'vuex-class'
+
+  import DmoMenu from './menu.vue'
   import SvgIcon from './SvgIcon'
   import { mapState } from 'vuex'
 
-  export default {
-    name: 'dmo-header',
-    components: {
-      dmoMenu,
-      SvgIcon
-    },
-    computed: {
-      ...mapState([
-        'title',
-        'modes',
-        'projectUrl'
-      ]),
-      titlep1 () {
-        return this.title.slice(0, this.title.length - 1)
-      },
-      titlep2 () {
-        return this.title.charAt(this.title.length - 1)
-      },
-      githubIcon() {
-        return this.$icon('github')
-      }
+  @Component({
+    components: { DmoMenu, SvgIcon }
+  })
+  export default class DmoHeader extends Vue {
+    @Getter('title') title
+    @Getter('projectUrl') projectUrl
+
+    get titlep1() {
+      return this.title.slice(0, this.title.length - 1)
+    }
+
+    get titlep2() {
+      return this.title.charAt(this.title.length - 1)
     }
   }
 </script>

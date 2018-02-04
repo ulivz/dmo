@@ -19,7 +19,12 @@
         // return Babel.transform(raw, { presets: ['es2015'] }).code;
         return raw;
       }
-    }
+    },
+    detectLanguage: true,
+    highlight: {
+      auto: true,
+      es2015: 'js => js'
+    },
   })
 </script>
 </body>

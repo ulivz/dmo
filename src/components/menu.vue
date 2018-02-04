@@ -1,7 +1,7 @@
 <template>
   <ul class="dmo-menu">
-    <li v-for="item in meauList"
-        :class="{'active': activeItem === item}"
+    <li v-for="item in modes"
+        :class="{'active': activeMode === item}"
         :key="item.key"
         @click="select(item)">
       <a href="#">{{ item.text }}</a>
@@ -9,30 +9,27 @@
   </ul>
 </template>
 
-<script>
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import { State, Getter, Action, Mutation } from 'vuex-class'
   import { mapMutations } from 'vuex'
-  export default {
-    name: 'dmo-header',
-    data() {
-      return {
-        activeItem: null
-      }
-    },
-    props: {
-      meauList: Array
-    },
+
+  @Component
+  export default class DmoMenu extends Vue {
+    @Getter('modes') modes
+    @Mutation('SELECT_MODE') SELECT_MODE
+
+    activeMode = null
+
     created() {
-      this.activeItem = this.meauList.find(item => item.active)
-    },
-    methods: {
-      ...mapMutations([
-        'selectMode'
-      ]),
-      select(item) {
-        if (item !== this.activeItem) {
-          this.activeItem = item
-          this.selectMode(item.key)
-        }
+      this.activeMode = this.modes.find(item => item.active)
+    }
+
+    select(item) {
+      if (item !== this.activeMode) {
+        this.activeMode = item
+        this.SELECT_MODE(item.key)
       }
     }
   }

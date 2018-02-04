@@ -1,16 +1,22 @@
 import { isPlainObject } from './shared'
 
-function serializeBody(body) {
+export interface IResponse {
+  status: number;
+  body: any;
+}
+
+function serializeBody(body: Object): string {
   if (!isPlainObject(body)) {
     throw new Error('Invalid body: ' + body)
   }
   let result = ''
-  for (let { key, index } of Object.keys(body).entries()) {
+  Object.keys(body).forEach((key, index) => {
     result += `${index !== 0 ? '&' : ''}${key}=${body[key]}`
-  }
+  })
+  return result
 }
 
-export function get(url) {
+export function get(url): Promise<IResponse> {
   return new Promise((resolve, reject) => {
     const obj = new XMLHttpRequest();
     obj.open('GET', url, true);
@@ -31,7 +37,7 @@ export function get(url) {
 }
 
 // Now it's uesless
-export function post(url, body) {
+export function post(url, body): Promise<IResponse> {
   return new Promise((resolve, reject) => {
     const obj = new XMLHttpRequest();
     obj.open('POST', url, true);
