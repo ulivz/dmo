@@ -1,3 +1,13 @@
+<a name="1.1.3"></a>
+## [1.1.3](http://git/compare/v1.1.2...v1.1.3) (2018-02-08)
+
+
+### Bug Fixes
+
+* build fail ([17347cf](http://git/commits/17347cf))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](http://git/compare/v1.1.1...v1.1.2) (2018-02-04)
 
