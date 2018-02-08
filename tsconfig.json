@@ -1,23 +1,21 @@
 {
   "compilerOptions": {
+    "types": [
+      "node"
+    ],
     "outDir": "./built/",
     "sourceMap": true,
-
     "lib": [
       "dom",
       "es2015"
     ],
-
     "target": "es2015",
     "module": "esnext",
-
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "noImplicitAny": false,
-
     "allowSyntheticDefaultImports": true,
     "allowUnusedLabels": true,
-
     "experimentalDecorators": true,
     "strictFunctionTypes": true
   },

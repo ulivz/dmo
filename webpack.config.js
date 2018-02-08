@@ -63,7 +63,8 @@ module.exports = {
               'vue-style-loader',
               'css-loader',
               'sass-loader?indentedSyntax'
-            ]
+            ],
+            'ts': ['babel-loader', 'ts-loader']
           }
           // other vue-loader options go here
         }
@@ -100,7 +101,8 @@ module.exports = {
   resolve: {
     alias: {
       'hljs': 'highlightjs/highlight.pack.js',
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'program-language-detector$': 'program-language-detector/dist/programLanguageDetector.es.js'
     },
     extensions: ['*', '.js', '.vue', '.json', '.ts']
   },
