@@ -39,9 +39,9 @@ export default function parseOptions(store: Store<any>, options: Options = {
   store.commit(types.SET_USER, { username, name, userUrl, projectUrl })
 
   // transform
-  store.commit(types.SET_TITLE, title)
-  store.commit(types.SET_PLACEHOLDER, placeholder)
-  store.commit(types.SET_INPUT, input)
+  store.commit(types.SET_TITLE, title || '')
+  store.commit(types.SET_PLACEHOLDER, placeholder || '')
+  store.commit(types.SET_INPUT, input || '')
   store.commit(types.SET_TRANSFORMERS, transformers)
   store.commit(types.SET_DETECT_LANGUAGE, detectLanguage)
 
