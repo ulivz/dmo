@@ -139,7 +139,7 @@
       border-radius: 4px;
       box-sizing: border-box;
       overflow: hidden;
-      margin: 15px;
+      margin: 1vw;
       height: calc(100vh - 110px - 51px);
       @extend %clear-fix;
       .edit, .preview {
