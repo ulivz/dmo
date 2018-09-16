@@ -1,21 +1,23 @@
 <template>
   <div class="layout">
-    <!--<gradient-background class="header gradient-bg"/>-->
     <dmo-header/>
     <div class="layout-content">
       <div class="edit">
-        <vue-codemirror @change="SET_INPUT"
-                        :value="value"
-                        :mode="inputLang"
-                        @focus="inputFocus"
-                        @ready="handleInput"
-                        @blur="inputBlur"></vue-codemirror>
+        <vue-codemirror
+          @change="SET_INPUT"
+          :value="value"
+          :mode="inputLang"
+          @focus="inputFocus"
+          @ready="handleInput"
+          @blur="inputBlur"
+        />
       </div>
 
-      <vue-codemirror-preview class='preview' :lang="outputLang" :code="result"/>
-      <!--<div class="preview">-->
-      <!--<pre :class="{'focus': isFocus}">{{ result }}</pre>-->
-      <!--</div>-->
+      <vue-codemirror-preview
+        class='preview'
+        :lang="outputLang"
+        :code="result"
+      />
     </div>
     <footer class="layout-copy">
       2016-2017 &copy; <a :href="userUrl">{{ (username || 'dmo').toUpperCase() }}</a>
