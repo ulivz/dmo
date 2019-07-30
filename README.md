@@ -12,6 +12,8 @@
 
 # Features
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ulivz/dmo.svg)](https://greenkeeper.io/)
+
 - _**Pure function driven 🍣**_
 - _**Support multiple modes 🎂**_
 - _**Minimalist Responsive Design 🍉**_
